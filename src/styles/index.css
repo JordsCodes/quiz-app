@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Esteban&family=Lato:wght@100&display=swap');
+
+body {
+  font-family: 'Lato', 'sans-serif';
+  background-image: url('../../images/background.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
