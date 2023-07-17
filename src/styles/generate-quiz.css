@@ -41,3 +41,32 @@ h1 {
   padding: 14px 20px;
   text-align: center;
 }
+
+.container-two {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 14px 20px;
+  text-align: center;
+}
+
+.search-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: auto;
+  font-size: 32px;
+  background-color: #FF595A;
+  border-radius: 25px;
+  box-shadow: 3px 3px lightcoral;
+  color: #CAC0B3;
+  padding: 14px 20px;
+  margin: 8px 0;
+  cursor: pointer;
+  
+}
+
+.search-button:hover {
+  background-color:darksalmon;
+}

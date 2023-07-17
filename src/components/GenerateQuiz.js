@@ -4,7 +4,7 @@ import '../styles/generate-quiz.css'
 const GenerateQuiz = () => {
   return (
     <div className='generate-quiz'> <h1>Generate Quiz</h1>
-    <div className='container-one'>
+      <div className='container-one'>
           <label htmlFor="num-of-questions">
             <input className='input'
               id="num"
@@ -13,7 +13,6 @@ const GenerateQuiz = () => {
             />
           </label>
           <label htmlFor="category">
-            
             <select className='category' id="category" name="category" >
               <option >Select a category</option>
               <option value="general-knowledge">General Knowledge</option>
@@ -41,10 +40,20 @@ const GenerateQuiz = () => {
               <option value="entertainment-jap-anime-manga">Entertainment: Japanese Anime & Manga</option>
               <option value="entertainment-cartoon-animations">Entertainment: Cartoon & Animations</option>
             </select>
-          </label>
-          </div>
-    </div>
-
+        </label>   
+      </div>
+      <div className='container-two'>
+        <button className="search-button" type="submit">
+          Easy
+        </button>
+        <button className="search-button" type="submit">
+          Medium
+        </button>
+        <button className="search-button" type="submit">
+          Hard
+        </button>
+      </div>
+  </div>
   )
 }
 
