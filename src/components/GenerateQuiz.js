@@ -46,11 +46,19 @@ const GenerateQuiz = () => {
         <button className="search-button" type="submit">
           Easy
         </button>
+          <button className="search-button" type="submit">
+            Medium
+          </button>
+            <button className="search-button" type="submit">
+              Hard
+            </button>
+      </div>
+      <div className='container-three'>
         <button className="search-button" type="submit">
-          Medium
+          Multiple Choice
         </button>
         <button className="search-button" type="submit">
-          Hard
+          True or False
         </button>
       </div>
   </div>
