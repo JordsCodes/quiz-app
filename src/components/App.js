@@ -1,13 +1,13 @@
 import '../styles/app.css'
 import { Routes, Route } from "react-router-dom";
+import GenerateQuiz from "../components/GenerateQuiz";
 
 function App() {
   return (
     <div className="app">
-      <h1>Quiz App</h1>
       <Routes>
-        <Route path="/" /> {/* landing page here */}
-        <Route path="/generate-quiz" />
+        <Route path="/" /> 
+        <Route path="generate-quiz" element={<GenerateQuiz />} />
         <Route path="/multi-choice" />
         <Route path="/true-false" />
         <Route path="/quiz-end" />
