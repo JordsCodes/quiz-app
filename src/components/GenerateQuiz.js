@@ -4,12 +4,13 @@ import '../styles/generate-quiz.css'
 const GenerateQuiz = () => {
   return (
     <div className='generate-quiz'> <h1>Generate Quiz</h1>
+      <div className='description'><span>Select number of questions and category</span></div>
       <div className='container-one'>
           <label htmlFor="num-of-questions">
             <input className='input'
               id="num"
               type="number"
-              placeholder="1 - 50"
+              placeholder="Max: 50 questions"
             />
           </label>
           <label htmlFor="category">
@@ -42,23 +43,30 @@ const GenerateQuiz = () => {
             </select>
         </label>   
       </div>
+      <div className='description'><span>Select level of difficulty</span></div>
       <div className='container-two'>
-        <button className="search-button" type="submit">
+        <button className="search-button" type="button">
           Easy
         </button>
-          <button className="search-button" type="submit">
+          <button className="search-button" type="button">
             Medium
           </button>
-            <button className="search-button" type="submit">
+            <button className="search-button" type="button">
               Hard
             </button>
       </div>
+      <div className='description'><span>Select type</span></div>
       <div className='container-three'>
-        <button className="search-button" type="submit">
+        <button className="search-button" type="button">
           Multiple Choice
         </button>
-        <button className="search-button" type="submit">
+        <button className="search-button" type="button">
           True or False
+        </button>
+      </div>
+      <div className='container-four'>
+        <button className="submit" type="submit" >
+          Submit
         </button>
       </div>
   </div>
