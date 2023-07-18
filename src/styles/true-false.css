@@ -6,6 +6,8 @@
     float: left;
     margin: 200px;
     margin-top: 300px;
+    border-radius: 7px;
+
 }
 
 .false-bttn {
@@ -16,13 +18,25 @@
     float: right;
     margin: 200px;
     margin-top: 300px;
+    border-radius: 7px;
 }
 
 .question {
     font-size: 80px;
     text-align: center;
     color: white;
-    font-weight: bold;
     margin: 100px;
     margin-bottom: 0;
+    font-weight: 1000;
+}
+
+.next-bttn {
+    background-color: #f9bc60;
+    height: 100px;
+    width: 300px;
+    font-size: 50px;
+    border-radius: 7px;
+    float: right;
+    margin: 30px;
+    margin-top: 2px;
 }
