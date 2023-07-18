@@ -2,8 +2,12 @@
 
 body {
   font-family: 'Lato', 'sans-serif';
+<<<<<<< HEAD
+=======
   background-color: #004643;
+>>>>>>> main
   margin: 0;
+  background-color: #004643;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -11,5 +15,9 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+<<<<<<< HEAD
+}
+=======
 }
 
+>>>>>>> main
