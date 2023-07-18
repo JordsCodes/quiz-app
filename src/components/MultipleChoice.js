@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import "../styles/multiple-choice.css";
 
 const MultipleChoice = () => {
@@ -23,6 +25,13 @@ const MultipleChoice = () => {
         <button className="multiple-choice-questions-button" type="submit">
           The Ancient Egyptians
         </button>
+      </div>
+      <div className="nav-button">
+        <Link to="/">
+          <button className="multiple-choice-questions-button" type="button">
+            Next
+          </button>
+        </Link>
       </div>
     </div>
   );
