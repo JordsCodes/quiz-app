@@ -1,16 +1,44 @@
-import React from 'react'
+import React from 'react';
+//import axios from 'axios';
 import '../styles/generate-quiz.css'
 
 const GenerateQuiz = () => {
+  /* const initialState = {
+    fields: {
+      number: '1',
+      category: '',
+      easy: '',
+      medium: '',
+      hard: '',
+      multiple: '',
+      trueFalse: '',
+    },
+  };
+
+  const [fields, setFields] = useState(initialState.fields);
+
+
+    axios
+    .post(`https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple`, fields)
+      .then = (response) => {
+        console.log(response);
+    }
+
+  const handleFieldChange = (event) => {
+    setFields({ ...fields, [event.target.name]: event.target.value });
+  }; */
+
   return (
     <div className='generate-quiz'> <h1>Generate Quiz</h1>
       <div className='description'><span>Select number of questions and category</span></div>
       <div className='container-one'>
-          <label htmlFor="num-of-questions">
-            <input className='input'
-              id="num"
-              type="number"
-              placeholder="Max: 50 questions"
+          <label htmlFor='num-of-questions'>
+            <input className='number' input_min='1' input_max='50'
+            id='number'
+            name='number'
+            type="number" min="1" max="50"
+            //value={fields.number}
+            //onChange={handleFieldChange}
             />
           </label>
           <label htmlFor="category">
@@ -65,7 +93,7 @@ const GenerateQuiz = () => {
         </button>
       </div>
       <div className='container-four'>
-        <button className="submit" type="submit" >
+      <button className='submit-button' type="submit" >
           Submit
         </button>
       </div>

@@ -1,10 +1,10 @@
 .generate-quiz, h1 {
-  color: white;
+  color: #fffffe;
   text-align: center;
   font-size: 64px;
 }
 
-.input, .category {
+.number, .category {
   display: flex;
   justify-content: space-between;
   width: 500px;
@@ -12,7 +12,7 @@
   margin: 5px 5px;
   font-size: 32px;
   background-color: #f9bc60;
-  color: black;
+  color: #001e1d;
   text-align: center;
   
   /* box-shadow: 3px 3px lightyellow; */
@@ -45,6 +45,7 @@
   display: flex;
   justify-content: left;
   font-size: 18pt;
+  color: #fffffe;
   font-weight: bold;
   margin-left: 20px;
   margin-bottom: 0;
@@ -57,7 +58,7 @@
   background-color: #f9bc60;
   
   /* box-shadow: inset 0px 5px 10px 0px lightcoral; */
-  color: black;
+  color: #001e1d;
   padding: 14px 20px;
   margin: 8px 0;
   cursor: pointer;
@@ -65,11 +66,11 @@
 
 .search-button:hover {
   background-color:darksalmon;
-  box-shadow: inset 0px 5px 10px 0px lightcoral;
-  transform: translateY(-5px);
+  /* box-shadow: inset 0px 5px 10px 0px lightcoral;
+  transform: translateY(-5px); */
 }
 
-.submit {
+.submit-button {
   display: flex;
   width: auto;
   font-size: 32px;
@@ -77,14 +78,14 @@
   background-color: #f9bc60;
   /* border-radius: 25px;
   box-shadow: inset 0px 5px 10px 0px lightcoral; */
-  color: black;
+  color: #001e1d;
   padding: 14px 20px;
   margin: 8px 0;
   cursor: pointer;
 }
 
 .submit:hover {
-  background-color:darksalmon;
-  box-shadow: inset 0px 5px 10px 0px lightcoral;
-  transform: translateY(-5px);
+  background-color:#f9bc60;
+  /* box-shadow: inset 0px 5px 10px 0px lightcoral;
+  transform: translateY(-5px); */
 }
