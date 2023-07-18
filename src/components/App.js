@@ -1,19 +1,21 @@
-import '../styles/app.css'
+import "../styles/app.css";
+import React from "react";
 import { Routes, Route } from "react-router-dom";
+import LandingPage from "./LandingPage";
+import MultipleChoice from "./MultipleChoice";
 
-function App() {
+const App = () => {
   return (
     <div className="app">
-      <h1>Quiz App</h1>
       <Routes>
-        <Route path="/" /> {/* landing page here */}
+        <Route path="/" element={<LandingPage />} />
         <Route path="/generate-quiz" />
-        <Route path="/multi-choice" />
+        <Route path="/multi-choice" element={<MultipleChoice />} />
         <Route path="/true-false" />
         <Route path="/quiz-end" />
       </Routes>
     </div>
   );
-}
+};
 
 export default App;

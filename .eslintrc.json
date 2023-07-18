@@ -1,14 +1,11 @@
 {
   "env": {
-    "browser": true,
-    "es2020": true,
-    "jest": true
+      "browser": true,
+      "es6": true,
+      "jest": true
   },
   "extends": [
-    "plugin:react/recommended",
-    "airbnb", 
-    "airbnb/hooks",
-    "plugin:prettier/recommended" 
+     "airbnb", "plugin:prettier/recommended"
   ],
   "globals": {
       "Atomics": "readonly",
@@ -25,9 +22,9 @@
       "react"
   ],
   "rules": {
-    "quotes": [0],
-    "react/prop-types": [0],
+    "no-underscore-dangle": [0],
     "react/jsx-props-no-spreading": [0],
+    "react/prop-types": [0],
     "import/order": [1],
     "no-unused-vars": [1],
     "prettier/prettier": [1, { "endOfLine": "auto" }],
@@ -36,6 +33,12 @@
       {
         "extensions": [".js", ".jsx"]
       }
+    ],
+    "react/function-component-definition": [
+      2,
+      {
+        "namedComponents": "arrow-function"
+      }
     ]
-    }
+  }
 }
