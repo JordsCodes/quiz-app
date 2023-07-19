@@ -4,8 +4,15 @@ import "../styles/generate-quiz.css";
 const GenerateQuiz = () => {
   const [activeDifficulty, setActiveDifficulty] = useState("");
 
+  const [activeType, setActiveType] = useState("");
+
   const handleActiveDifficulty = (difficulty) => {
     setActiveDifficulty(difficulty);
+  };
+
+  const handleActiveType = (type) => {
+    console.log(type);
+    setActiveType(type);
   };
 
   return (
@@ -120,12 +127,28 @@ const GenerateQuiz = () => {
         </div>
         <div className="container-three">
           <div>
-            <button className="choice-button" type="button">
+            <button
+              className={
+                activeType === "multi-choice"
+                  ? "choice-button-active"
+                  : "choice-button"
+              }
+              type="button"
+              onClick={() => handleActiveType("multi-choice")}
+            >
               Multiple Choice
             </button>
           </div>
           <div>
-            <button className="choice-button" type="button">
+            <button
+              className={
+                activeType === "true-false"
+                  ? "choice-button-active"
+                  : "choice-button"
+              }
+              type="button"
+              onClick={() => handleActiveType("true-false")}
+            >
               True or False
             </button>
           </div>
