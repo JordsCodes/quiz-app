@@ -25,11 +25,13 @@ const GenerateQuiz = () => {
     setFields({ ...fields, [event.target.name]: event.target.value });
   }; */
 
-  const [activeButton, setActiveButton] = useState(0);
-  /* const toggle = () => {
-    setSelected(!selected)
-  } */
-  let active;
+  /* const [activeButton, setActiveButton] = useState(""); */
+  const [active, setActive] = useState("");
+
+  const handleClick = (event) => {
+    setActiveButton(event.target.id);
+  };
+
   return (
     <form>
       <div className="generate-quiz">
@@ -99,15 +101,23 @@ const GenerateQuiz = () => {
           <span>Select level of difficulty</span>
         </div>
         <div className="container-two">
-          <div className={`choice ${activeButton === 0 ? "active" : ""}`}>
+          <button
+            key={1}
+            className={active === "1" ? "active" : undefined}
+            id={"1"}
+            onClick={handleClick}
+          >
+            Easy
+          </button>
+          <div className={`choice ${activeButton === 1 ? "active" : ""}`}>
             <button
               className="choice-button"
-              label={`${activeButton === 0 ? "ACTIVE" : "inactive"}`}
+              label={activeButton === 1 ? "ACTIVE" : "inactive"}
               type="button"
-              onClick={() => setActiveButton(0)}
+              onClick={() => setActiveButton(1)}
             >
-              {active ? "ACTIVE" : "inactive"}
-            
+              {/* {active ? "ACTIVE" : "inactive"} */}
+              Easy
             </button>
           </div>
           <div className={`choice ${activeButton === 1 ? "active" : ""}`}>
@@ -117,7 +127,7 @@ const GenerateQuiz = () => {
               type="button"
               onClick={() => setActiveButton(1)}
             >
-              {/* {active ? "ACTIVE" : "inactive"} */}
+              {/*  {active ? "ACTIVE" : "inactive"} */}
               Medium
             </button>
           </div>
@@ -128,7 +138,7 @@ const GenerateQuiz = () => {
               type="button"
               onClick={() => setActiveButton(2)}
             >
-              {/*  {active ? "ACTIVE" : "inactive"} */}
+              {/* {active ? "ACTIVE" : "inactive"} */}
               Hard
             </button>
           </div>

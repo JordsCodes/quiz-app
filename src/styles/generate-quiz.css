@@ -16,6 +16,7 @@
   height: 55px;
   border: none;
   border-radius: 5px;
+  padding: auto;
   font-size: 24px;
   background-color: #f9bc60;
   color: #001e1d;
@@ -55,16 +56,17 @@
 
 .choice-button {
   display: flex;
-  width: auto;
+  justify-content: center;
+  width: 210px;
   font-size: 24px;
   background-color: #f9bc60;
   border: none;
   border-radius: 5px;
   color: #001e1d;
   padding: 14px 20px;
+  padding: auto;
   margin: 8px 0;
   cursor: pointer;
-  
 }
 
 .choice-button:hover {
