@@ -11,7 +11,6 @@ const GenerateQuiz = () => {
   };
 
   const handleActiveType = (type) => {
-    console.log(type);
     setActiveType(type);
   };
 
