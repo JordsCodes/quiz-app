@@ -25,12 +25,7 @@ const GenerateQuiz = () => {
     setFields({ ...fields, [event.target.name]: event.target.value });
   }; */
 
-  /* const [activeButton, setActiveButton] = useState(""); */
-  const [active, setActive] = useState("");
-
-  const handleClick = (event) => {
-    setActiveButton(event.target.id);
-  };
+  const [activeButton, setActiveButton] = useState("");
 
   return (
     <form>
@@ -101,14 +96,6 @@ const GenerateQuiz = () => {
           <span>Select level of difficulty</span>
         </div>
         <div className="container-two">
-          <button
-            key={1}
-            className={active === "1" ? "active" : undefined}
-            id={"1"}
-            onClick={handleClick}
-          >
-            Easy
-          </button>
           <div className={`choice ${activeButton === 1 ? "active" : ""}`}>
             <button
               className="choice-button"

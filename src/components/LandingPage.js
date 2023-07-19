@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../styles/landing-page.css";
 
-
 const LandingPage = () => {
   return (
     <div className="landing-page">
@@ -17,7 +16,6 @@ const LandingPage = () => {
         <button className="generate-quiz-button" type="submit">
           <Link to="generate-quiz">Generate Quiz</Link>
         </button>
-        
       </div>
     </div>
   );
