@@ -5,7 +5,7 @@ const TrueFalse = () => {
   return (
     <>
       <div className="question">
-        <p>Question goes here</p>
+        <h1 className="true-false-question">Question goes here</h1>
       </div>
       <button className="true-bttn" type="button">
         True
