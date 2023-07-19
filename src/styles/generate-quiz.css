@@ -1,21 +1,25 @@
 .generate-quiz, h1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: 500;
   color: #fffffe;
+  font-size: 48px;
   text-align: center;
-  font-size: 64px;
+
 }
 
 .number, .category {
   display: flex;
   justify-content: space-between;
-  width: 500px;
-  padding: 14px 20px;
-  margin: 5px 5px;
-  font-size: 32px;
+  width: 300px;
+  height: 55px;
+  border: none;
+  border-radius: 5px;
+  font-size: 24px;
   background-color: #f9bc60;
   color: #001e1d;
   text-align: center;
-  
-  /* box-shadow: 3px 3px lightyellow; */
   cursor: pointer;
 }
 
@@ -23,11 +27,10 @@
   display: flex;
   justify-content: space-around;
   margin: 0;
-  margin-bottom: 80px;
-  margin-left: 0;
-  margin-right: 0;
-  width: 90%;
-  padding: 14px 20px;
+  margin-top: 10px;
+  margin-bottom: 60px;
+  width: 50%;
+  padding: 20px;
   border-style: dotted;
   border-color: #abd1c6;
 }
@@ -35,9 +38,7 @@
 .container-four {
   display: flex;
   justify-content: flex-end;
-  margin: 5px 5px;
-  width: 90%;
-  padding: 14px 20px;
+  width: 50%;
   text-align: center;
 } 
 
@@ -45,39 +46,39 @@
   display: flex;
   justify-content: left;
   font-size: 18pt;
+  font-weight: 400;
   color: #fffffe;
-  font-weight: bold;
+  margin-top: 10px;
   margin-left: 20px;
   margin-bottom: 0;
 }
 
-.search-button {
+.choice-button {
   display: flex;
   width: auto;
-  font-size: 32px;
+  font-size: 24px;
   background-color: #f9bc60;
-  
-  /* box-shadow: inset 0px 5px 10px 0px lightcoral; */
+  border: none;
+  border-radius: 5px;
   color: #001e1d;
   padding: 14px 20px;
   margin: 8px 0;
   cursor: pointer;
+  
 }
 
-.search-button:hover {
+.choice-button:hover {
   background-color:darksalmon;
-  /* box-shadow: inset 0px 5px 10px 0px lightcoral;
-  transform: translateY(-5px); */
 }
 
 .submit-button {
   display: flex;
   width: auto;
-  font-size: 32px;
+  font-size: 24px;
   text-align: center;
   background-color: #f9bc60;
-  /* border-radius: 25px;
-  box-shadow: inset 0px 5px 10px 0px lightcoral; */
+  border: none;
+  border-radius: 5px;
   color: #001e1d;
   padding: 14px 20px;
   margin: 8px 0;
@@ -86,6 +87,4 @@
 
 .submit:hover {
   background-color:#f9bc60;
-  /* box-shadow: inset 0px 5px 10px 0px lightcoral;
-  transform: translateY(-5px); */
 }
