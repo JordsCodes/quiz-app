@@ -10,6 +10,7 @@ const GetQuestion = () => {
       type: "",
     },
   };
+
   const [choices, setChoices] = useState(initialState.choices);
   axios
     .post(`https://opentdb.com/api.php?`, null, { params: { ...choices } })
