@@ -16,13 +16,13 @@ const GenerateQuiz = () => {
 
 
     axios
-    .post(`https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple`, fields)
+    .get(`https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple`, fields)
       .then = (response) => {
         console.log(response);
     }
 
   const handleFieldChange = (event) => {
-    setFields({ ...fields, [event.target.name]: event.target.value });
+    setChoices({ ...fields, [event.target.name]: event.target.value });
   }; */
 
   const [activeButton, setActiveButton] = useState("");
