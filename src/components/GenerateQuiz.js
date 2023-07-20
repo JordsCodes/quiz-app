@@ -12,6 +12,16 @@ const GenerateQuiz = () => {
   const [activeDifficulty, setActiveDifficulty] = useState("");
   const [activeType, setActiveType] = useState("");
 
+  const handleAmountChange = (event) => {
+    const change = { ...choices, [event.target.name]: event.target.value };
+    setChoices(change);
+  };
+
+  const handleCategoryChange = (event) => {
+    const change = { ...choices, [event.target.name]: event.target.value };
+    setChoices(change);
+  };
+
   const handleActiveDifficulty = (difficulty) => {
     setActiveDifficulty(difficulty);
     const change = { ...choices, difficulty };
@@ -24,9 +34,9 @@ const GenerateQuiz = () => {
     setChoices(change);
   };
 
-  const handleFieldChange = (event) => {
-    const change = { ...choices, [event.target.name]: event.target.value };
-    setChoices(change);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(choices);
   };
 
   return (
@@ -46,7 +56,7 @@ const GenerateQuiz = () => {
               name="amount"
               type="number"
               placeholder="No. of questions"
-              onChange={handleFieldChange}
+              onChange={handleAmountChange}
             />
           </label>
           <label htmlFor="category">
@@ -54,7 +64,7 @@ const GenerateQuiz = () => {
               className="category"
               id="category"
               name="category"
-              onChange={handleFieldChange}
+              onChange={handleCategoryChange}
             >
               <option>Select a category</option>
               <option value="general-knowledge">General Knowledge</option>
@@ -175,7 +185,11 @@ const GenerateQuiz = () => {
           </div>
         </div>
         <div className="container-four">
-          <button className="submit-button" type="submit">
+          <button
+            className="submit-button"
+            type="submit"
+            onClick={handleSubmit}
+          >
             Submit
           </button>
         </div>
