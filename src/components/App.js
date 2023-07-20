@@ -4,9 +4,9 @@ import { Routes, Route } from "react-router-dom";
 import GenerateQuiz from "./GenerateQuiz";
 import LandingPage from "./LandingPage";
 import MultipleChoice from "./MultipleChoice";
-import TrueFalse from "./TrueFalse";
 import QuizEnd from "./QuizEnd";
 import GetQuestion from "./GetQuestion";
+import TrueFalse from "./TrueFalse";
 
 const App = () => {
   return (

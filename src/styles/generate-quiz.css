@@ -27,9 +27,8 @@
 .container-one, .container-two, .container-three {
   display: flex;
   justify-content: space-around;
-  margin: 0;
   margin-top: 10px;
-  margin-bottom: 60px;
+  margin-bottom: 10px;
   width: 50%;
   padding: 20px;
   border-style: dotted;
@@ -69,8 +68,23 @@
   cursor: pointer;
 }
 
+.choice-button-active {
+  display: flex;
+  justify-content: center;
+  width: 210px;
+  font-size: 24px;
+  background-color: #f9bc60;
+  border: dashed;
+  border-radius: 5px;
+  color: #001e1d;
+  padding: 14px 20px;
+  padding: auto;
+  margin: 8px 0;
+  cursor: pointer;
+}
+
 .choice-button:hover {
-  background-color:darksalmon;
+  background-color: white;
 }
 
 .submit-button {
@@ -87,6 +101,6 @@
   cursor: pointer;
 }
 
-.submit:hover {
-  background-color:#f9bc60;
+.submit-button:hover {
+  background-color: white;
 }

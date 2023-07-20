@@ -4,23 +4,24 @@ import { Link } from "react-router-dom";
 
 const QuizEnd = () => {
   return (
-    <>
+    <div className="end-page-content">
       <div className="congrats-message">
-        <p>Congratulations!</p>
-        <p>You scored x/y.</p>
+        <h2>Congratulations!</h2>
+        <h2>You scored X/Y.</h2>
       </div>
-      <Link to="/">
-        <button className="home-bttn" type="button">
-          Back to Home
-        </button>
-      </Link>
-      <Link to="/">
-        <button className="leader-board-bttn" type="button">
-          View Leader board
-        </button>
-      </Link>
-    </>
+      <div className="end-bttns-container">
+        <Link to="/">
+          <button className="end-page-bttn" type="button">
+            Back to Home
+          </button>
+        </Link>
+        <Link to="/">
+          <button className="end-page-bttn" type="button">
+            View Leader board
+          </button>
+        </Link>
+      </div>
+    </div>
   );
 };
-
 export default QuizEnd;
