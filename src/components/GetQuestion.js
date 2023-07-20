@@ -1,8 +1,8 @@
-// import { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 
 const GetQuestion = () => {
-  /* const initialState = {
+   const initialState = {
     choices: {
       amount: 2,
       category: "",
@@ -10,13 +10,13 @@ const GetQuestion = () => {
       type: "",
     },
   };
-  const [choices, setChoices] = useState(initialState.choices); */
+  const [choices, setChoices] = useState(initialState.choices);
   axios
     .post(
-      `https://opentdb.com/api.php?`, null, { params: { amount: 2, category: 9, difficulty: "easy", type: "multiple" } }
+      `https://opentdb.com/api.php?`, null, { params: { ...choices } }
     )
     .then((response) => {
-      // setChoices(response.data.results[0]);
+      setChoices(response.data.results[0]);
       console.log(response.data.results);
     });
 };
