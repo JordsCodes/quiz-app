@@ -22,6 +22,16 @@ const GenerateQuiz = () => {
     setChoices(change);
   };
 
+    axios
+    .get(`https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple`, fields)
+      .then = (response) => {
+        console.log(response);
+    }
+
+  const handleFieldChange = (event) => {
+    setChoices({ ...fields, [event.target.name]: event.target.value });
+  }; */
+
   const handleActiveDifficulty = (difficulty) => {
     setActiveDifficulty(difficulty);
     const change = { ...choices, difficulty };
