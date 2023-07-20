@@ -2,16 +2,31 @@ import React, { useState } from "react";
 import "../styles/generate-quiz.css";
 
 const GenerateQuiz = () => {
-  const [activeDifficulty, setActiveDifficulty] = useState("");
+  const [choices, setChoices] = useState({
+    amount: "",
+    category: "",
+    difficulty: "",
+    type: "",
+  });
 
+  const [activeDifficulty, setActiveDifficulty] = useState("");
   const [activeType, setActiveType] = useState("");
 
   const handleActiveDifficulty = (difficulty) => {
     setActiveDifficulty(difficulty);
+    const change = { ...choices, difficulty };
+    setChoices(change);
   };
 
   const handleActiveType = (type) => {
     setActiveType(type);
+    const change = { ...choices, type };
+    setChoices(change);
+  };
+
+  const handleFieldChange = (event) => {
+    const change = { ...choices, [event.target.name]: event.target.value };
+    setChoices(change);
   };
 
   return (
@@ -27,14 +42,20 @@ const GenerateQuiz = () => {
               className="number"
               min="1"
               max="50"
-              id="number"
-              name="number"
+              id="amount"
+              name="amount"
               type="number"
               placeholder="No. of questions"
+              onChange={handleFieldChange}
             />
           </label>
           <label htmlFor="category">
-            <select className="category" id="category" name="category">
+            <select
+              className="category"
+              id="category"
+              name="category"
+              onChange={handleFieldChange}
+            >
               <option>Select a category</option>
               <option value="general-knowledge">General Knowledge</option>
               <option value="entertainment-books">Entertainment: Books</option>
@@ -89,6 +110,7 @@ const GenerateQuiz = () => {
                   : "choice-button"
               }
               type="button"
+              name="difficulty"
               onClick={() => handleActiveDifficulty("easy")}
             >
               Easy
@@ -128,12 +150,12 @@ const GenerateQuiz = () => {
           <div>
             <button
               className={
-                activeType === "multi-choice"
+                activeType === "multiple"
                   ? "choice-button-active"
                   : "choice-button"
               }
               type="button"
-              onClick={() => handleActiveType("multi-choice")}
+              onClick={() => handleActiveType("multiple")}
             >
               Multiple Choice
             </button>
@@ -141,12 +163,12 @@ const GenerateQuiz = () => {
           <div>
             <button
               className={
-                activeType === "true-false"
+                activeType === "boolean"
                   ? "choice-button-active"
                   : "choice-button"
               }
               type="button"
-              onClick={() => handleActiveType("true-false")}
+              onClick={() => handleActiveType("boolean")}
             >
               True or False
             </button>
