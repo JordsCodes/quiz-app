@@ -11,8 +11,8 @@ const App = () => {
   return (
     <div className="app">
       <Routes>
-        <Route path="generate-quiz" element={<GenerateQuiz />} />
         <Route path="/" element={<LandingPage />} />
+        <Route path="generate-quiz" element={<GenerateQuiz />} />
         <Route path="/multi-choice" element={<MultipleChoice />} />
         <Route path="/true-false" element={<TrueFalse />} />
         <Route path="/quiz-end" element={<QuizEnd />} />

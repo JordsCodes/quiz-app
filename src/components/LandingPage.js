@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../styles/landing-page.css";
 
 const LandingPage = () => {
@@ -13,7 +14,7 @@ const LandingPage = () => {
       <div className="generate-quiz">
         <p className="get-started-text">Ready to get started?</p>
         <button className="generate-quiz-button" type="submit">
-          Generate Quiz
+          <Link to="generate-quiz">Generate Quiz</Link>
         </button>
       </div>
     </div>
