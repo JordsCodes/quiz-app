@@ -1,31 +1,43 @@
 import React, { useState } from "react";
-// import axios from 'axios';
 import "../styles/generate-quiz.css";
 
 const GenerateQuiz = () => {
-  /* const initialState = {
-    fields: {
-      number: '1',
-      category: '',
-      difficulty: '',
-      type: ''
-    },
+  const [choices, setChoices] = useState({
+    amount: "",
+    category: "",
+    difficulty: "",
+    type: "",
+  });
+
+  const [activeDifficulty, setActiveDifficulty] = useState("");
+  const [activeType, setActiveType] = useState("");
+
+  const handleAmountChange = (event) => {
+    const change = { ...choices, [event.target.name]: event.target.value };
+    setChoices(change);
   };
 
-  const [fields, setFields] = useState(initialState.fields);
+  const handleCategoryChange = (event) => {
+    const change = { ...choices, [event.target.name]: event.target.value };
+    setChoices(change);
+  };
 
+  const handleActiveDifficulty = (difficulty) => {
+    setActiveDifficulty(difficulty);
+    const change = { ...choices, difficulty };
+    setChoices(change);
+  };
 
-    axios
-    .post(`https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple`, fields)
-      .then = (response) => {
-        console.log(response);
-    }
+  const handleActiveType = (type) => {
+    setActiveType(type);
+    const change = { ...choices, type };
+    setChoices(change);
+  };
 
-  const handleFieldChange = (event) => {
-    setFields({ ...fields, [event.target.name]: event.target.value });
-  }; */
-
-  const [activeButton, setActiveButton] = useState("");
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(choices);
+  };
 
   return (
     <form>
@@ -40,16 +52,20 @@ const GenerateQuiz = () => {
               className="number"
               min="1"
               max="50"
-              id="number"
-              name="number"
+              id="amount"
+              name="amount"
               type="number"
               placeholder="No. of questions"
-              // value={fields.number}
-              // onChange={handleFieldChange}
+              onChange={handleAmountChange}
             />
           </label>
           <label htmlFor="category">
-            <select className="category" id="category" name="category">
+            <select
+              className="category"
+              id="category"
+              name="category"
+              onChange={handleCategoryChange}
+            >
               <option>Select a category</option>
               <option value="general-knowledge">General Knowledge</option>
               <option value="entertainment-books">Entertainment: Books</option>
@@ -96,36 +112,43 @@ const GenerateQuiz = () => {
           <span>Select level of difficulty</span>
         </div>
         <div className="container-two">
-          <div className={`choice ${activeButton === 1 ? "active" : ""}`}>
+          <div>
             <button
-              className="choice-button"
-              label={activeButton === 1 ? "ACTIVE" : "inactive"}
+              className={
+                activeDifficulty === "easy"
+                  ? "choice-button-active"
+                  : "choice-button"
+              }
               type="button"
-              onClick={() => setActiveButton(1)}
+              name="difficulty"
+              onClick={() => handleActiveDifficulty("easy")}
             >
-              {/* {active ? "ACTIVE" : "inactive"} */}
               Easy
             </button>
           </div>
-          <div className={`choice ${activeButton === 1 ? "active" : ""}`}>
+          <div>
             <button
-              className="choice-button"
-              label={activeButton === 1 ? "ACTIVE" : "inactive"}
+              className={
+                activeDifficulty === "medium"
+                  ? "choice-button-active"
+                  : "choice-button"
+              }
               type="button"
-              onClick={() => setActiveButton(1)}
+              onClick={() => handleActiveDifficulty("medium")}
             >
-              {/*  {active ? "ACTIVE" : "inactive"} */}
               Medium
             </button>
           </div>
-          <div className={`choice ${activeButton === 2 ? "active" : ""}`}>
+          <div>
             <button
-              className="choice-button"
-              label={activeButton === 2 ? "ACTIVE" : "inactive"}
+              className={
+                activeDifficulty === "hard"
+                  ? "choice-button-active"
+                  : "choice-button"
+              }
               type="button"
-              onClick={() => setActiveButton(2)}
+              onClick={() => handleActiveDifficulty("hard")}
             >
-              {/* {active ? "ACTIVE" : "inactive"} */}
               Hard
             </button>
           </div>
@@ -134,31 +157,39 @@ const GenerateQuiz = () => {
           <span>Select type</span>
         </div>
         <div className="container-three">
-          <div className={`choice ${activeButton === 0 ? "active" : ""}`}>
+          <div>
             <button
-              className="choice-button"
-              label={activeButton === 0 ? "ACTIVE" : "inactive"}
+              className={
+                activeType === "multiple"
+                  ? "choice-button-active"
+                  : "choice-button"
+              }
               type="button"
-              onClick={() => setActiveButton(0)}
+              onClick={() => handleActiveType("multiple")}
             >
-              {/* {active ? "ACTIVE" : "inactive"} */}
               Multiple Choice
             </button>
           </div>
-          <div className={`choice ${activeButton === 1 ? "active" : ""}`}>
+          <div>
             <button
-              className="choice-button"
-              label={activeButton === 1 ? "ACTIVE" : "inactive"}
+              className={
+                activeType === "boolean"
+                  ? "choice-button-active"
+                  : "choice-button"
+              }
               type="button"
-              onClick={() => setActiveButton(1)}
+              onClick={() => handleActiveType("boolean")}
             >
-              {/* {active ? "ACTIVE" : "inactive"} */}
               True or False
             </button>
           </div>
         </div>
         <div className="container-four">
-          <button className="submit-button" type="submit">
+          <button
+            className="submit-button"
+            type="submit"
+            onClick={handleSubmit}
+          >
             Submit
           </button>
         </div>
