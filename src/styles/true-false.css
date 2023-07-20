@@ -1,18 +1,22 @@
+.question-content {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .true-bttn {
-    background-color: #f9bc60;
+    background-color: #F9BC60;
     height: 200px;
     width: 500px;
     font-size: 50px;
-    margin: 0 auto;
     border-radius: 7px;
-    display: flex;
-    flex: wrap;
-    justify-content: space-between;
-
 }
 
 .false-bttn {
-    background-color: #f9bc60;
+    background-color: #F9BC60;
     height: 200px;
     width: 500px;
     font-size: 50px;
@@ -26,16 +30,23 @@
     text-align: center;
     color: white;
     margin: 100px;
-    margin-bottom: 0;
     font-weight: 1000;
 }
 
 .next-bttn {
-    background-color: #f9bc60;
+    background-color: #F9BC60;
     height: 100px;
     width: 300px;
     font-size: 50px;
     border-radius: 7px;
-    margin: 30px;
-    margin-top: 2px;
+    margin-left: 100rem;
+    margin-bottom: 2rem;
+}
+
+.buttons-container {
+    display: flex;
+    margin-top: 2rem;
+    align-items: flex-start;
+    justify-content: space-around;
+    width: 100%;
 }
