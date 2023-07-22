@@ -1,9 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
 import "../styles/multiple-choice.css";
+import GenerateQuiz from "./GenerateQuiz";
 
-const MultipleChoice = () => {
+const MultipleChoice = (getQuestions) => {
+
+  
   return (
     <div className="multiple-choice">
       <div className="multiple-choice-heading">

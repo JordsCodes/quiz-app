@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../styles/generate-quiz.css";
 import data from "../data/category.json";
+import getQuestion from "../requests/getQuestion";
 
 const GenerateQuiz = () => {
   const [choices, setChoices] = useState({
@@ -22,7 +23,7 @@ const GenerateQuiz = () => {
     const categories = data.trivia_categories;
 
     const category = categories.filter(
-      (item) => item.name === event.target.value,
+      (item) => item.name === event.target.value
     );
 
     const change = { ...choices, [event.target.name]: category[0].id };
@@ -41,9 +42,18 @@ const GenerateQuiz = () => {
     setChoices(change);
   };
 
-  const handleSubmit = (event) => {
+  const [getQuestions, setGetQuestions] = useState([]);
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(choices);
+    const questionsData = await getQuestion(choices);
+    console.log(questionsData);
+
+    setGetQuestions(questionsData);
+  
+    console.log("-->", getQuestions);
+
+
   };
 
   return (
