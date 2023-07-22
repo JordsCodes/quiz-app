@@ -5,7 +5,6 @@ import GenerateQuiz from "./GenerateQuiz";
 import LandingPage from "./LandingPage";
 import MultipleChoice from "./MultipleChoice";
 import QuizEnd from "./QuizEnd";
-import GetQuestion from "./GetQuestion";
 import TrueFalse from "./TrueFalse";
 
 const App = () => {
@@ -17,7 +16,6 @@ const App = () => {
         <Route path="/multi-choice" element={<MultipleChoice />} />
         <Route path="/true-false" element={<TrueFalse />} />
         <Route path="/quiz-end" element={<QuizEnd />} />
-        <Route path="/get-question" element={<GetQuestion />} />
       </Routes>
     </div>
   );
