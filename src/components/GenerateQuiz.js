@@ -4,7 +4,7 @@ import "../styles/generate-quiz.css";
 import data from "../data/category.json";
 import getQuestion from "../requests/getQuestion";
 
-const GenerateQuiz = () => {
+const GenerateQuiz = ({questions, setQuestions}) => {
   const [choices, setChoices] = useState({
     amount: "",
     category: "",
@@ -14,7 +14,6 @@ const GenerateQuiz = () => {
 
   const [activeDifficulty, setActiveDifficulty] = useState("");
   const [activeType, setActiveType] = useState("");
-  const [getQuestions, setGetQuestions] = useState([]);
 
   const navigate = useNavigate();
 
@@ -49,8 +48,7 @@ const GenerateQuiz = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const questionsData = await getQuestion(choices);
-    setGetQuestions(questionsData);
-    console.log(getQuestions);
+    setQuestions(questionsData);
     navigate("/question-drop", { replace: true });
   };
 
