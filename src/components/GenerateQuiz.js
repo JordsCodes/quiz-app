@@ -48,11 +48,8 @@ const GenerateQuiz = () => {
     event.preventDefault();
     const questionsData = await getQuestion(choices);
     console.log(questionsData);
-
     setGetQuestions(questionsData);
     console.log("-->", getQuestions[0]);
-
-
   };
 
   return (

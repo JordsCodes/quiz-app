@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles/multiple-choice.css";
 
+// dummy question data
 const question = {
   category: "History",
   type: "multiple",
@@ -11,7 +12,10 @@ const question = {
   incorrect_answers: ["1932", "1930", "1925"],
 };
 
+// makes array of four answers
 const answers = [].concat(question.incorrect_answers, question.correct_answer);
+
+// randomizes the order of the answers
 for (let i = 0; i < answers.length; i += 1) {
   answers.splice(Math.round(Math.random() * i), 0, answers.pop());
 }
