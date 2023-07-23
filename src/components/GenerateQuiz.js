@@ -50,8 +50,7 @@ const GenerateQuiz = () => {
     console.log(questionsData);
 
     setGetQuestions(questionsData);
-  
-    console.log("-->", getQuestions);
+    console.log("-->", getQuestions[0]);
 
 
   };
