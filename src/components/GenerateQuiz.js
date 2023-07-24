@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../styles/generate-quiz.css";
 import data from "../data/category.json";
 import getQuestion from "../requests/getQuestion";
@@ -13,6 +14,7 @@ const GenerateQuiz = () => {
 
   const [activeDifficulty, setActiveDifficulty] = useState("");
   const [activeType, setActiveType] = useState("");
+  const navigate = useNavigate();
 
   const handleAmountChange = (event) => {
     const change = { ...choices, [event.target.name]: event.target.value };
@@ -42,18 +44,17 @@ const GenerateQuiz = () => {
     setChoices(change);
   };
 
-  const [getQuestions, setGetQuestions] = useState([]);
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     const questionsData = await getQuestion(choices);
     console.log(questionsData);
-
-    setGetQuestions(questionsData);
-  
-    console.log("-->", getQuestions);
-
-
+    /* setGetQuestions(questionsData);
+    console.log("update ->", getQuestions) */ // first thing decide on whether to route to multi choice or true/false
+    if (choices.type === "multiple") {
+      navigate("/multi-choice", { state: { allQuestions: questionsData } });
+    } else {
+      navigate("/true-false", { state: { allQuestions: questionsData } });
+    }
   };
 
   return (
