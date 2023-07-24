@@ -2,6 +2,11 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/multiple-choice.css";
 
+const decode = (str) => {
+  const txt = new DOMParser().parseFromString(str, "text/html");
+  return txt.documentElement.textContent;
+};
+
 const MultipleChoice = ({
   question,
   answers,
@@ -20,7 +25,10 @@ const MultipleChoice = ({
   return (
     <div className="multiple-choice">
       <div className="multiple-choice-heading">
-        <h1 className="multiple-choice-heading-text"> {question.question}</h1>
+        <h1 className="multiple-choice-heading-text">
+          {" "}
+          {decode(question.question)}
+        </h1>
       </div>
       <div className="multiple-choice-questions">
         <button
