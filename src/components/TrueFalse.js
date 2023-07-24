@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../styles/true-false.css";
 
 const decode = (str) => {
@@ -7,32 +7,19 @@ const decode = (str) => {
   return txt.documentElement.textContent;
 };
 
-const TrueFalse = () => {
+const TrueFalse = ({ question, questionNumber, setQuestionNumber }) => {
   const [activeAnswer, setActiveAnswer] = useState("");
-  const [questionCounter, setQuestionCounter] = useState(0);
+  const navigate = useNavigate();
 
-  const { state } = useLocation();
-  const { allQuestions } = state; // Read allQuestions property in the 'state' object
-
-  const chosenquestion = allQuestions[questionCounter];
-
-  // eslint does not like the name of these destructured variables but we cannot change the structure, or name, of data that comes from a 3rd party api
-  /* eslint-disable */
-  const { question, incorrect_answers, correct_answer } = chosenquestion;
-
-  console.log("and again", allQuestions, questionCounter);
-  console.log("q", allQuestions[questionCounter].question);
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    const newValue = questionCounter + 1;
-    setQuestionCounter(newValue);
-    console.log("counter=", newValue);
+  const handleNext = () => {
+    const nextQuestion = questionNumber + 1;
+    setQuestionNumber(nextQuestion);
+    navigate("/question-drop", { replace: true });
   };
 
   return (
     <div className="question-content">
-      <h1 className="true-false-heading-text">{decode(question)}</h1>
+      <h1 className="true-false-heading-text">{decode(question.question)}</h1>
       <div className="button-container">
         <button
           className={
@@ -58,12 +45,10 @@ const TrueFalse = () => {
         </button>
       </div>
       <div className="next-button-container">
-      <div className="nav-button">
-        <Link to="/">
-            <button className="next-button" type="button" onClick={handleSubmit}>
-              Next
-            </button>
-          </Link>
+        <div className="nav-button">
+          <button className="next-button" type="button" onClick={handleNext}>
+            Next
+          </button>
         </div>
       </div>
     </div>

@@ -17,17 +17,23 @@ const QuestionDrop = ({ questions }) => {
     answers.splice(Math.round(Math.random() * i), 0, answers.pop());
   }
   // return either a MultipleChoice or TrueFalse component:
-  if (question.type === "multiple") {
+  if (question.type === "boolean") {
     return (
-      <MultipleChoice
+      <TrueFalse
         question={question}
-        answers={answers}
         questionNumber={questionNumber}
         setQuestionNumber={setQuestionNumber}
       />
     );
   }
-  return <TrueFalse question={question} answers={answers} />;
+  return (
+    <MultipleChoice
+      question={question}
+      answers={answers}
+      questionNumber={questionNumber}
+      setQuestionNumber={setQuestionNumber}
+    />
+  );
 };
 
 export default QuestionDrop;
