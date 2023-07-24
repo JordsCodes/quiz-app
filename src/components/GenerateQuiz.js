@@ -4,7 +4,7 @@ import "../styles/generate-quiz.css";
 import data from "../data/category.json";
 import getQuestion from "../requests/getQuestion";
 
-const GenerateQuiz = () => {
+const GenerateQuiz = ({questions, setQuestions}) => {
   const [choices, setChoices] = useState({
     amount: "",
     category: "",
@@ -25,7 +25,7 @@ const GenerateQuiz = () => {
     const categories = data.trivia_categories;
 
     const category = categories.filter(
-      (item) => item.name === event.target.value
+      (item) => item.name === event.target.value,
     );
 
     const change = { ...choices, [event.target.name]: category[0].id };
@@ -47,14 +47,10 @@ const GenerateQuiz = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const questionsData = await getQuestion(choices);
-    console.log(questionsData);
-    /* setGetQuestions(questionsData);
-    console.log("update ->", getQuestions) */ // first thing decide on whether to route to multi choice or true/false
-    if (choices.type === "multiple") {
-      navigate("/multi-choice", { state: { allQuestions: questionsData } });
-    } else {
-      navigate("/true-false", { state: { allQuestions: questionsData } });
-    }
+
+    setQuestions(questionsData);
+    navigate("/question-drop", { replace: true });
+
   };
 
   return (
