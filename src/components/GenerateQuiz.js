@@ -14,7 +14,6 @@ const GenerateQuiz = ({questions, setQuestions}) => {
 
   const [activeDifficulty, setActiveDifficulty] = useState("");
   const [activeType, setActiveType] = useState("");
-
   const navigate = useNavigate();
 
   const handleAmountChange = (event) => {
@@ -48,8 +47,10 @@ const GenerateQuiz = ({questions, setQuestions}) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const questionsData = await getQuestion(choices);
+
     setQuestions(questionsData);
     navigate("/question-drop", { replace: true });
+
   };
 
   return (

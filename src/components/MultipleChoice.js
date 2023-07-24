@@ -69,6 +69,7 @@ const MultipleChoice = ({
         </button>
       </div>
       <div className="nav-button">
+
         <button
           className="multiple-choice-questions-button"
           type="button"
@@ -80,5 +81,4 @@ const MultipleChoice = ({
     </div>
   );
 };
-
 export default MultipleChoice;

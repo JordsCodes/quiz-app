@@ -14,7 +14,7 @@ const LandingPage = () => {
       <div className="generate-quiz">
         <p className="get-started-text">Ready to get started?</p>
         <button className="generate-quiz-button" type="submit">
-          <Link to="generate-quiz">Generate Quiz</Link>
+          <Link to="generate-quiz" style={{ color: '#001e1d', textDecoration: 'none' }}>Generate Quiz</Link>
         </button>
       </div>
     </div>
