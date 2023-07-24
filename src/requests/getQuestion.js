@@ -1,6 +1,5 @@
 // import { useState } from "react";
 
-
 /* const getQuestion = async (choices, { setGetQuestions }) => {
   const [getQuestions, setGetQuestions] = useState([]);
   
@@ -32,20 +31,19 @@ import axios from "axios";
 
 const getQuestion = (choices) => {
   try {
-   return axios
-      .post(`https://opentdb.com/api.php?`, null, { params: choices, })
+    return axios
+      .post(`https://opentdb.com/api.php?`, null, { params: choices })
       .then((response) => {
         const questionsData = response.data.results;
-        console.log("results=", questionsData);
         return questionsData;
-      })
-     } catch (error) {
+      });
+  } catch (error) {
     console.error("Error fetching questions:", error);
     return [];
   }
 };
 
-  /*   console.log(response.data.results);
+/*   console.log(response.data.results);
     return response.data.results;
  
   

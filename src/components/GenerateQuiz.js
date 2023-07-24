@@ -1,9 +1,10 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../styles/generate-quiz.css";
 import data from "../data/category.json";
 import getQuestion from "../requests/getQuestion";
 
-const GenerateQuiz = () => {
+const GenerateQuiz = ({questions, setQuestions}) => {
   const [choices, setChoices] = useState({
     amount: "",
     category: "",
@@ -14,6 +15,8 @@ const GenerateQuiz = () => {
   const [activeDifficulty, setActiveDifficulty] = useState("");
   const [activeType, setActiveType] = useState("");
 
+  const navigate = useNavigate();
+
   const handleAmountChange = (event) => {
     const change = { ...choices, [event.target.name]: event.target.value };
     setChoices(change);
@@ -23,7 +26,7 @@ const GenerateQuiz = () => {
     const categories = data.trivia_categories;
 
     const category = categories.filter(
-      (item) => item.name === event.target.value
+      (item) => item.name === event.target.value,
     );
 
     const change = { ...choices, [event.target.name]: category[0].id };
@@ -42,18 +45,11 @@ const GenerateQuiz = () => {
     setChoices(change);
   };
 
-  const [getQuestions, setGetQuestions] = useState([]);
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     const questionsData = await getQuestion(choices);
-    console.log(questionsData);
-
-    setGetQuestions(questionsData);
-  
-    console.log("-->", getQuestions);
-
-
+    setQuestions(questionsData);
+    navigate("/question-drop", { replace: true });
   };
 
   return (
