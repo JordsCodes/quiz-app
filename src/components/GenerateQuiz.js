@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import "../styles/generate-quiz.css";
+import data from "../data/category.json";
+import getQuestion from "../requests/getQuestion";
 
 const GenerateQuiz = () => {
+  const [activeDifficulty, setActiveDifficulty] = useState("");
+  const [activeType, setActiveType] = useState("");
   const [choices, setChoices] = useState({
     amount: "",
     category: "",
@@ -9,16 +13,17 @@ const GenerateQuiz = () => {
     type: "",
   });
 
-  const [activeDifficulty, setActiveDifficulty] = useState("");
-  const [activeType, setActiveType] = useState("");
-
   const handleAmountChange = (event) => {
     const change = { ...choices, [event.target.name]: event.target.value };
     setChoices(change);
   };
 
   const handleCategoryChange = (event) => {
-    const change = { ...choices, [event.target.name]: event.target.value };
+    const categories = data.trivia_categories;
+    const category = categories.filter(
+      (item) => item.name === event.target.value,
+    );
+    const change = { ...choices, [event.target.name]: category[0].id };
     setChoices(change);
   };
 
@@ -34,9 +39,10 @@ const GenerateQuiz = () => {
     setChoices(change);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(choices);
+    const questionsData = await getQuestion(choices);
+    const result = questionsData.filter((data) => data.length > 4);
   };
 
   return (
@@ -67,42 +73,42 @@ const GenerateQuiz = () => {
               onChange={handleCategoryChange}
             >
               <option>Select a category</option>
-              <option value="general-knowledge">General Knowledge</option>
-              <option value="entertainment-books">Entertainment: Books</option>
-              <option value="entertainment-film">Entertainment: Film</option>
-              <option value="entertainment-music">Entertainment: Music</option>
-              <option value="entertainment-musicals-theatres">
+              <option value="General Knowledge">General Knowledge</option>
+              <option value="Entertainment: Books">Entertainment: Books</option>
+              <option value="Entertainment: Film">Entertainment: Film</option>
+              <option value="Entertainment: Music">Entertainment: Music</option>
+              <option value="Entertainment: Musicals & Theatres">
                 Entertainment: Musicals & Theatres
               </option>
-              <option value="entertainment-television">
+              <option value="Entertainment: Television">
                 Entertainment: Television
               </option>
-              <option value="entertainment-videogames">
+              <option value="Entertainment: Video Games">
                 Entertainment: Video Games
               </option>
-              <option value="entertainment-boardgames">
+              <option value="Entertainment: Board Games">
                 Entertainment: Board Games
               </option>
-              <option value="science-nature">Science & Nature</option>
-              <option value="science-computers">Science: Computers</option>
-              <option value="science-mathematics">Science: Mathematics</option>
-              <option value="mythology">Mythology</option>
-              <option value="sports">Sports</option>
-              <option value="geography">Geography</option>
-              <option value="history">History</option>
-              <option value="politics">Politics</option>
-              <option value="art">Art</option>
-              <option value="celebrities">Celebrities</option>
-              <option value="animals">Animals</option>
-              <option value="vehicles">Vehicles</option>
-              <option value="entertainment-comics">
+              <option value="Science & Nature">Science & Nature</option>
+              <option value="Science: Computers">Science: Computers</option>
+              <option value="Science: Mathematics">Science: Mathematics</option>
+              <option value="Mythology">Mythology</option>
+              <option value="Sports">Sports</option>
+              <option value="Geography">Geography</option>
+              <option value="History">History</option>
+              <option value="Politics">Politics</option>
+              <option value="Art">Art</option>
+              <option value="Celebrities">Celebrities</option>
+              <option value="Animals">Animals</option>
+              <option value="Vehicles">Vehicles</option>
+              <option value="Entertainment: Comics">
                 Entertainment: Comics
               </option>
-              <option value="science-gadgets">Science: Gadgets</option>
-              <option value="entertainment-jap-anime-manga">
+              <option value="Science: Gadgets">Science: Gadgets</option>
+              <option value="Entertainment: Japanese Anime & Manga">
                 Entertainment: Japanese Anime & Manga
               </option>
-              <option value="entertainment-cartoon-animations">
+              <option value="Entertainment: Cartoon & Animations">
                 Entertainment: Cartoon & Animations
               </option>
             </select>

@@ -5,7 +5,7 @@ import GenerateQuiz from "./GenerateQuiz";
 import LandingPage from "./LandingPage";
 import MultipleChoice from "./MultipleChoice";
 import QuizEnd from "./QuizEnd";
-import GetQuestion from "./GetQuestion";
+import GetQuestion from "../requests/getQuestion";
 import TrueFalse from "./TrueFalse";
 
 const App = () => {
