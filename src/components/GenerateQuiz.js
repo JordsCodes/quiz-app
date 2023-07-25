@@ -14,35 +14,12 @@ const GenerateQuiz = ({ questions, setQuestions }) => {
 
   const [activeDifficulty, setActiveDifficulty] = useState("");
   //  const [activeType, setActiveType] = useState("");
-  const [activeType, setActiveType] = useState("");
-  // const [maxAmount, setMaxAmount] = useState(50);
-  // const [selectedAmount, setSelectedAmount] = useState("");
-
   const navigate = useNavigate();
-
-  // useEffect(() => {
-  //   const fetchMaxAmount = async () => {
-  //     if (choices.category && choices.difficulty) {
-  //       const response = await fetch(
-  //         `https://opentdb.com/api_count.php?category=${choices.category}&difficulty=${choices.difficulty}`
-  //       );
-  //       // eslint-disable-next-line no-shadow
-  //       const data = await response.json();
-  //       setMaxAmount(data.category_question_count.total_question_count);
-  //     }
-  //   };
-  //   fetchMaxAmount();
-  // }, [choices.category, choices.difficulty]);
 
   const handleAmountChange = (event) => {
     const { value } = event.target;
     const change = { ...choices, [event.target.name]: event.target.value };
     setChoices(change);
-
-    //   if (value <= maxAmount) {
-    //     setSelectedAmount(value);
-    //   }
-    // };
 
     const handleCategoryChange = (event) => {
       const categories = data.trivia_categories;
@@ -54,7 +31,6 @@ const GenerateQuiz = ({ questions, setQuestions }) => {
       const change = { ...choices, [event.target.name]: category[0].id };
       setChoices(change);
     };
-
 
   /* const handleActiveType = (type) => {
     setActiveType(type);
@@ -77,8 +53,6 @@ const GenerateQuiz = ({ questions, setQuestions }) => {
 
     };
 
-    // const isSubmitDisabled = selectedAmount <= 0 || selectedAmount > maxAmount;
-
     return (
       <form onSubmit={handleSubmit}>
         <div className="generate-quiz">
@@ -91,12 +65,12 @@ const GenerateQuiz = ({ questions, setQuestions }) => {
               <input
                 className="number"
                 min="1"
-                max={50}
+                max="50"
                 id="amount"
                 name="amount"
                 type="number"
                 placeholder="No. of questions"
-                // value={selectedAmount}
+              
                 onChange={handleAmountChange}
               />
             </label>
@@ -154,22 +128,6 @@ const GenerateQuiz = ({ questions, setQuestions }) => {
           </div>
 
         </div>
-       {/* <div className="description">
-          <span>Select type</span>
-        </div>
-         <div className="container-three">
-          <div>
-            <button
-              className={
-                activeType === "multiple"
-                  ? "choice-button-active"
-                  : "choice-button"
-              }
-              type="button"
-              onClick={() => handleActiveType("multiple")}
-            >
-              Multiple Choice
-            </button>
           <div className="container-two">
             <div>
               <button
@@ -216,7 +174,7 @@ const GenerateQuiz = ({ questions, setQuestions }) => {
             <span>Select type</span>
 
           </div>
-          <div className="container-three">
+          {/* <div className="container-three">
             <div>
               <button
                 className={
@@ -243,37 +201,19 @@ const GenerateQuiz = ({ questions, setQuestions }) => {
                 True or False
               </button>
             </div>
-          </div>
+          </div> */}
           <div className="container-four">
             <button
               className="submit-button"
               type="submit"
-            // disabled={isSubmitDisabled}
-            >
-              Submit
-            </button>
-
-          </div> 
-        </div> */}
-        <div className="container-four">
-          <button
-            className="submit-button"
-            type="submit"
             onClick={handleSubmit}
           >
             Submit
           </button>
         </div>
-      </div>
     </form>
   );
-
-          </div>
-        </div>
-      </form>
-    );
   };
-
 };
 
 export default GenerateQuiz;

@@ -8,7 +8,6 @@ const decode = (str) => {
 };
 
 const TrueFalse = ({ question, questionNumber, setQuestionNumber }) => {
-  const [currentQuestion, setCurrentQuestion] = useState("");
   const [activeAnswer, setActiveAnswer] = useState("");
   const [canClickNext, setCanClickNext] = useState(false);
   const navigate = useNavigate();
@@ -34,10 +33,6 @@ const TrueFalse = ({ question, questionNumber, setQuestionNumber }) => {
   };
 
   return (
-    <div className="display">
-      <span className="active-question-no">{currentQuestion + 1}</span>
-      <span className="total-question">{questionNumber.length}</span>
-     
     <div className="question-content">
       <h1 className="true-false-heading-text">{decode(question.question)}</h1>
       <div className="button-container">
@@ -50,10 +45,6 @@ const TrueFalse = ({ question, questionNumber, setQuestionNumber }) => {
           type="submit"
 
           onClick={() => handleAnswerClick(true)}
-
-          onClick={() => setActiveAnswer(true)}
-          style={{ cursor: "pointer" }}
-
         >
           True
         </button>
@@ -66,10 +57,6 @@ const TrueFalse = ({ question, questionNumber, setQuestionNumber }) => {
           type="submit"
 
           onClick={() => handleAnswerClick(false)}
-
-          onClick={() => setActiveAnswer(false)}
-          style={{ cursor: "pointer" }}
-
         >
           False
         </button>
@@ -78,16 +65,9 @@ const TrueFalse = ({ question, questionNumber, setQuestionNumber }) => {
         <div className="nav-button">
           <button className="next-button" type="button" onClick={handleNext}>
             {/* {questionNumber === question.length - 1 ? 'Finish' : 'Next'} */}
-          <button
-            className="next-button"
-            type="button"
-            onClick={handleNext}
-            style={{ cursor: "pointer" }}
-          >
             Next
           </button>
         </div>
-      </div>
       </div>
       </div>
   );
