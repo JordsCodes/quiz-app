@@ -13,9 +13,11 @@ const GenerateQuiz = ({ questions, setQuestions }) => {
   });
 
   const [activeDifficulty, setActiveDifficulty] = useState("");
+  //  const [activeType, setActiveType] = useState("");
   const [activeType, setActiveType] = useState("");
   // const [maxAmount, setMaxAmount] = useState(50);
   // const [selectedAmount, setSelectedAmount] = useState("");
+
   const navigate = useNavigate();
 
   // useEffect(() => {
@@ -53,15 +55,16 @@ const GenerateQuiz = ({ questions, setQuestions }) => {
       setChoices(change);
     };
 
+
+  /* const handleActiveType = (type) => {
+    setActiveType(type);
+    const change = { ...choices, type };
+    setChoices(change);
+  }; */
+
     const handleActiveDifficulty = (difficulty) => {
       setActiveDifficulty(difficulty);
       const change = { ...choices, difficulty };
-      setChoices(change);
-    };
-
-    const handleActiveType = (type) => {
-      setActiveType(type);
-      const change = { ...choices, type };
       setChoices(change);
     };
 
@@ -149,6 +152,24 @@ const GenerateQuiz = ({ questions, setQuestions }) => {
           <div className="description">
             <span>Select level of difficulty</span>
           </div>
+
+        </div>
+       {/* <div className="description">
+          <span>Select type</span>
+        </div>
+         <div className="container-three">
+          <div>
+            <button
+              className={
+                activeType === "multiple"
+                  ? "choice-button-active"
+                  : "choice-button"
+              }
+              type="button"
+              onClick={() => handleActiveType("multiple")}
+            >
+              Multiple Choice
+            </button>
           <div className="container-two">
             <div>
               <button
@@ -193,6 +214,7 @@ const GenerateQuiz = ({ questions, setQuestions }) => {
           </div>
           <div className="description">
             <span>Select type</span>
+
           </div>
           <div className="container-three">
             <div>
@@ -230,11 +252,28 @@ const GenerateQuiz = ({ questions, setQuestions }) => {
             >
               Submit
             </button>
+
+          </div> 
+        </div> */}
+        <div className="container-four">
+          <button
+            className="submit-button"
+            type="submit"
+            onClick={handleSubmit}
+          >
+            Submit
+          </button>
+        </div>
+      </div>
+    </form>
+  );
+
           </div>
         </div>
       </form>
     );
   };
+
 };
 
 export default GenerateQuiz;
