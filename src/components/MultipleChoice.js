@@ -14,13 +14,29 @@ const MultipleChoice = ({
   setQuestionNumber,
 }) => {
   const [activeAnswer, setActiveAnswer] = useState("");
+  const [canClickNext, setCanClickNext] = useState(false);
   const navigate = useNavigate();
 
-  const handleNext = () => {
-    const nextQuestion = questionNumber + 1;
-    setQuestionNumber(nextQuestion);
-    navigate("/question-drop", { replace: true });
+    const handleAnswerClick = (answer) => {
+    setActiveAnswer(answer);
+    setCanClickNext(true);
   };
+
+  const handleNext = () => {
+     if (canClickNext) {
+      // first get the activeAnswer and see if it is correct, then store this bit of information
+      console.log("user clicked ->", activeAnswer, 'correct answer is', question.correct_answer);
+      // reset these states
+      setCanClickNext(false);
+      setActiveAnswer("");
+
+      // next sort out moving to the next question
+
+      const nextQuestion = questionNumber + 1;
+      setQuestionNumber(nextQuestion);
+      navigate("/question-drop", { replace: true });
+  }
+};
 
   return (
     <div className="multiple-choice">
@@ -38,9 +54,9 @@ const MultipleChoice = ({
               : "multiple-choice-questions-button"
           }
           type="submit"
-          onClick={() => setActiveAnswer(answers[0])}
+          onClick={() => handleAnswerClick(answers[0])}
         >
-          {answers[0]}
+          {decode(answers[0])}
         </button>
         <button
           className={
@@ -49,9 +65,9 @@ const MultipleChoice = ({
               : "multiple-choice-questions-button"
           }
           type="submit"
-          onClick={() => setActiveAnswer(answers[1])}
+          onClick={() => handleAnswerClick(answers[1])}
         >
-          {answers[1]}
+          {decode(answers[1])}
         </button>
         <button
           className={
@@ -60,9 +76,9 @@ const MultipleChoice = ({
               : "multiple-choice-questions-button"
           }
           type="submit"
-          onClick={() => setActiveAnswer(answers[2])}
+          onClick={() => handleAnswerClick(answers[2])}
         >
-          {answers[2]}
+          {decode(answers[2])}
         </button>
         <button
           className={
@@ -71,9 +87,9 @@ const MultipleChoice = ({
               : "multiple-choice-questions-button"
           }
           type="submit"
-          onClick={() => setActiveAnswer(answers[3])}
+          onClick={() => handleAnswerClick(answers[3])}
         >
-          {answers[3]}
+          {decode(answers[3])}
         </button>
       </div>
       <div className="nav-button">

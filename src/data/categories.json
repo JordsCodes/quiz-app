@@ -1,0 +1,28 @@
+{
+  "category_question_count": [
+    { "total_question_count": "https://opentdb.com/api_count.php?category=9" },
+    { "total_question_count": "https://opentdb.com/api_count.php?category=10" },
+    { "total_question_count": "https://opentdb.com/api_count.php?category=11" },
+    { "total_question_count": "https://opentdb.com/api_count.php?category=12" },
+    { "total_question_count": "https://opentdb.com/api_count.php?category=13" },
+    { "total_question_count": "https://opentdb.com/api_count.php?category=14" },
+    { "total_question_count": "https://opentdb.com/api_count.php?category=15" },
+    { "total_question_count": "https://opentdb.com/api_count.php?category=16" },
+    { "total_question_count": "https://opentdb.com/api_count.php?category=17" },
+    { "total_question_count": "https://opentdb.com/api_count.php?category=18" },
+    { "total_question_count": "https://opentdb.com/api_count.php?category=19" },
+    { "total_question_count": "https://opentdb.com/api_count.php?category=20" },
+    { "total_question_count": "https://opentdb.com/api_count.php?category=21" },
+    { "total_question_count": "https://opentdb.com/api_count.php?category=22" },
+    { "total_question_count": "https://opentdb.com/api_count.php?category=23" },
+    { "total_question_count": "https://opentdb.com/api_count.php?category=24" },
+    { "total_question_count": "https://opentdb.com/api_count.php?category=25" },
+    { "total_question_count": "https://opentdb.com/api_count.php?category=26" },
+    { "total_question_count": "https://opentdb.com/api_count.php?category=27" },
+    { "total_question_count": "https://opentdb.com/api_count.php?category=28" },
+    { "total_question_count": "https://opentdb.com/api_count.php?category=29" },
+    { "total_question_count": "https://opentdb.com/api_count.php?category=30" },
+    { "total_question_count": "https://opentdb.com/api_count.php?category=31" },
+    { "total_question_count": "https://opentdb.com/api_count.php?category=32" }
+  ]
+}

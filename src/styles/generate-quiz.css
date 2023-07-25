@@ -24,7 +24,7 @@
   cursor: pointer;
 }
 
-.container-one, .container-two, .container-three {
+.container-one, .container-two {
   display: flex;
   justify-content: space-around;
   margin-top: 10px;

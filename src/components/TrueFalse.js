@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../styles/true-false.css";
 
 const decode = (str) => {
@@ -8,16 +8,36 @@ const decode = (str) => {
 };
 
 const TrueFalse = ({ question, questionNumber, setQuestionNumber }) => {
+  const [currentQuestion, setCurrentQuestion] = useState("");
   const [activeAnswer, setActiveAnswer] = useState("");
+  const [canClickNext, setCanClickNext] = useState(false);
   const navigate = useNavigate();
-
+  
+  const handleAnswerClick = (answer) => {
+    setActiveAnswer(answer);
+    setCanClickNext(true);
+  };
+  
   const handleNext = () => {
-    const nextQuestion = questionNumber + 1;
-    setQuestionNumber(nextQuestion);
-    navigate("/question-drop", { replace: true });
+    if (canClickNext) {
+      // first get the activeAnswer and see if it is correct, then store this bit of information
+      console.log("user clicked ->", activeAnswer, 'correct answer is', question.correct_answer);
+      // reset these states
+      setCanClickNext(false);
+      setActiveAnswer("");
+
+      // next sort out moving to the next question
+      const nextQuestion = questionNumber + 1;
+      setQuestionNumber(nextQuestion);
+      navigate("/question-drop", { replace: true });      
+    }
   };
 
   return (
+    <div className="display">
+      <span className="active-question-no">{currentQuestion + 1}</span>
+      <span className="total-question">{questionNumber.length}</span>
+     
     <div className="question-content">
       <h1 className="true-false-heading-text">{decode(question.question)}</h1>
       <div className="button-container">
@@ -28,7 +48,7 @@ const TrueFalse = ({ question, questionNumber, setQuestionNumber }) => {
               : "true-false-questions-button"
           }
           type="submit"
-          onClick={() => setActiveAnswer(true)}
+          onClick={() => handleAnswerClick(true)}
         >
           True
         </button>
@@ -39,7 +59,7 @@ const TrueFalse = ({ question, questionNumber, setQuestionNumber }) => {
               : "true-false-questions-button"
           }
           type="submit"
-          onClick={() => setActiveAnswer(false)}
+          onClick={() => handleAnswerClick(false)}
         >
           False
         </button>
@@ -47,11 +67,13 @@ const TrueFalse = ({ question, questionNumber, setQuestionNumber }) => {
       <div className="next-button-container">
         <div className="nav-button">
           <button className="next-button" type="button" onClick={handleNext}>
+            {/* {questionNumber === question.length - 1 ? 'Finish' : 'Next'} */}
             Next
           </button>
         </div>
       </div>
-    </div>
+      </div>
+      </div>
   );
 };
 

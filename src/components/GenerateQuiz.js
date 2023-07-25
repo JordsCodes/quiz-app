@@ -13,7 +13,7 @@ const GenerateQuiz = ({questions, setQuestions}) => {
   });
 
   const [activeDifficulty, setActiveDifficulty] = useState("");
-  const [activeType, setActiveType] = useState("");
+  //  const [activeType, setActiveType] = useState("");
   const navigate = useNavigate();
 
   const handleAmountChange = (event) => {
@@ -38,11 +38,11 @@ const GenerateQuiz = ({questions, setQuestions}) => {
     setChoices(change);
   };
 
-  const handleActiveType = (type) => {
+  /* const handleActiveType = (type) => {
     setActiveType(type);
     const change = { ...choices, type };
     setChoices(change);
-  };
+  }; */
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -167,10 +167,10 @@ const GenerateQuiz = ({questions, setQuestions}) => {
             </button>
           </div>
         </div>
-        <div className="description">
+       {/* <div className="description">
           <span>Select type</span>
         </div>
-        <div className="container-three">
+         <div className="container-three">
           <div>
             <button
               className={
@@ -196,8 +196,8 @@ const GenerateQuiz = ({questions, setQuestions}) => {
             >
               True or False
             </button>
-          </div>
-        </div>
+          </div> 
+        </div> */}
         <div className="container-four">
           <button
             className="submit-button"
