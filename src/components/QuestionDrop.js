@@ -1,9 +1,14 @@
 import React, { useState } from "react";
 import MultipleChoice from "./MultipleChoice";
 import TrueFalse from "./TrueFalse";
+import QuizEnd from "./QuizEnd";
 
 const QuestionDrop = ({ questions }) => {
   const [questionNumber, setQuestionNumber] = useState(0);
+
+  if (questionNumber >= questions.length) {
+    return <QuizEnd />;
+  }
 
   // initialise question to be rendered:
   const question = questions[questionNumber];

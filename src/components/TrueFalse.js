@@ -29,6 +29,7 @@ const TrueFalse = ({ question, questionNumber, setQuestionNumber }) => {
           }
           type="submit"
           onClick={() => setActiveAnswer(true)}
+          style={{ cursor: "pointer" }}
         >
           True
         </button>
@@ -40,13 +41,19 @@ const TrueFalse = ({ question, questionNumber, setQuestionNumber }) => {
           }
           type="submit"
           onClick={() => setActiveAnswer(false)}
+          style={{ cursor: "pointer" }}
         >
           False
         </button>
       </div>
       <div className="next-button-container">
         <div className="nav-button">
-          <button className="next-button" type="button" onClick={handleNext}>
+          <button
+            className="next-button"
+            type="button"
+            onClick={handleNext}
+            style={{ cursor: "pointer" }}
+          >
             Next
           </button>
         </div>

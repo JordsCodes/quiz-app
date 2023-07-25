@@ -1,8 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "../styles/landing-page.css";
+import { useNavigate } from "react-router-dom";
 
 const LandingPage = () => {
+  const navigate = useNavigate();
+
+  const handleGenerateQuizClick = () => {
+    navigate("/generate-quiz");
+  }
+
   return (
     <div className="landing-page">
       <div className="header">
@@ -13,11 +19,16 @@ const LandingPage = () => {
       </div>
       <div className="generate-quiz">
         <p className="get-started-text">Ready to get started?</p>
-        <button className="generate-quiz-button" type="submit">
-          <Link to="generate-quiz" style={{ color: '#001e1d', textDecoration: 'none' }}>Generate Quiz</Link>
+        <button
+          type="button"
+          className="generate-quiz-button"
+          onClick={handleGenerateQuizClick}
+          style={{ cursor: "pointer" }}
+        >
+          Generate Quiz
         </button>
       </div>
-    </div>
+    </div >
   );
 };
 
