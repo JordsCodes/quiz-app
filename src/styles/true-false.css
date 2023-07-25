@@ -19,30 +19,36 @@
   margin-top: 10%;
   margin-bottom: 12%;
 
-  }
+}
 
 .true-false-questions-button {
   border: none;
   border-radius: 5px;
   background-color: #f9bc60;
-  color: #001e1d;;
+  color: #001e1d;
+  ;
   width: 300px;
   height: 150px;
   font-size: 24px;
-  }
+}
 
 .true-false-questions-button-active {
   display: flex;
   justify-content: space-between;
   border: none;
   border-radius: 5px;
-  background-color: white;
-  color: #001e1d;;
+  background-color: #f9bc60;
+  color: #001e1d;
   width: 300px;
   height: 150px;
   font-size: 24px;
-  text-align: center;
-  }
+  border-style: dotted;
+  display: inline-block;
+}
+
+.true-false-questions-button:hover {
+  background-color: white;
+}
 
 .next-button-container {
   text-align: center;
@@ -56,4 +62,8 @@
   width: 200px;
   height: 75px;
   font-size: 24px;
+}
+
+.next-button:hover {
+  background-color: white;
 }
