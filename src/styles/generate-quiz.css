@@ -1,4 +1,5 @@
-.generate-quiz, h1 {
+.generate-quiz,
+h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -6,10 +7,10 @@
   color: #fffffe;
   font-size: 48px;
   text-align: center;
-
 }
 
-.number, .category {
+.number,
+.category {
   display: flex;
   justify-content: space-between;
   width: 300px;
@@ -24,9 +25,12 @@
   cursor: pointer;
 }
 
-.container-one, .container-two {
+.container-one,
+.container-two,
+.container-three {
   display: flex;
   justify-content: space-around;
+  margin: 0 auto;
   margin-top: 10px;
   margin-bottom: 10px;
   width: 50%;
@@ -38,9 +42,10 @@
 .container-four {
   display: flex;
   justify-content: flex-end;
+  margin: 0 auto;
   width: 50%;
   text-align: center;
-} 
+}
 
 .description {
   display: flex;
