@@ -12,21 +12,29 @@ const MultipleChoice = ({
   answers,
   questionNumber,
   setQuestionNumber,
+  handleAnswerSubmit,
 }) => {
   const [activeAnswer, setActiveAnswer] = useState("");
   const [canClickNext, setCanClickNext] = useState(false);
   const navigate = useNavigate();
 
-    const handleAnswerClick = (answer) => {
+  const handleAnswerClick = (answer) => {
     setActiveAnswer(answer);
     setCanClickNext(true);
   };
 
   const handleNext = () => {
-     if (canClickNext) {
+    if (canClickNext) {
+      handleAnswerSubmit(activeAnswer);
       // first get the activeAnswer and see if it is correct, then store this bit of information
-       console.log("user clicked ->", activeAnswer, 'correct answer is', question.correct_answer);
-       
+
+      console.log(
+        "user clicked ->",
+        activeAnswer,
+        "correct answer is",
+        question.correct_answer,
+      );
+
       // reset these states
       setCanClickNext(false);
       setActiveAnswer("");
@@ -37,8 +45,8 @@ const MultipleChoice = ({
       setQuestionNumber(nextQuestion);
        
       navigate("/question-drop", { replace: true });
-  }
-};
+    }
+  };
 
   return (
     <div className="multiple-choice">

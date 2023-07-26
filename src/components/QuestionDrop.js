@@ -1,15 +1,27 @@
 import React, { useState } from "react";
 import MultipleChoice from "./MultipleChoice";
-import TrueFalse from "./TrueFalse";
 import QuizEnd from "./QuizEnd";
+import TrueFalse from "./TrueFalse";
 
 const QuestionDrop = ({ questions }) => {
   const [questionNumber, setQuestionNumber] = useState(0);
+  const [score, setScore] = useState(0);
 
   if (questionNumber >= questions.length) {
-    return <QuizEnd score={score}/>;
+    return <QuizEnd score={score} totalQuestions={questions.length} />;
   }
 
+  const handleAnswerSubmit = (userAnswer) => {
+    const currentQuestion = questions[questionNumber];
+    const formattedUserAnswer = typeof userAnswer === "string" ? userAnswer.toLowerCase() : userAnswer;
+    const formattedCorrectAnswer = currentQuestion.correct_answer.toLowerCase();
+
+    if (formattedUserAnswer === formattedCorrectAnswer) {
+      setScore((prevScore) => prevScore + 1);
+    }
+
+    setQuestionNumber((prevQuestionNumber) => prevQuestionNumber + 1);
+  };
   // initialise question to be rendered:
   const question = questions[questionNumber];
   // initialise answers array:
@@ -28,16 +40,27 @@ const QuestionDrop = ({ questions }) => {
         question={question}
         questionNumber={questionNumber}
         setQuestionNumber={setQuestionNumber}
+        handleAnswerSubmit={handleAnswerSubmit}
       />
     );
   }
+
+
   return (
-    <MultipleChoice
-      question={question}
-      answers={answers}
-      questionNumber={questionNumber}
-      setQuestionNumber={setQuestionNumber}
-    />
+    <div>
+      {questionNumber < questions.length && (
+        <div>
+          <h2>Question {questionNumber + 1}</h2>
+          <MultipleChoice
+            question={question}
+            answers={answers}
+            questionNumber={questionNumber}
+            setQuestionNumber={setQuestionNumber}
+            handleAnswerSubmit={handleAnswerSubmit}
+          />
+        </div>
+      )}
+    </div>
   );
 };
 

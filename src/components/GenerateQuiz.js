@@ -19,10 +19,11 @@ const GenerateQuiz = ({ questions, setQuestions }) => {
     const change = { ...choices, [event.target.name]: event.target.value };
     setChoices(change);
   };
+
   const handleCategoryChange = (event) => {
     const categories = data.trivia_categories;
     const category = categories.find(
-      (item) => item.name === event.target.value
+      (item) => item.name === event.target.value,
     );
     const change = {
       ...choices,
@@ -159,6 +160,7 @@ const GenerateQuiz = ({ questions, setQuestions }) => {
           </button>
         </div>
       </div>
+
       <div className="container-four">
         <button className="submit-button" type="submit" onClick={handleSubmit}>
           Submit
