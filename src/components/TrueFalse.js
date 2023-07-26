@@ -7,20 +7,32 @@ const decode = (str) => {
   return txt.documentElement.textContent;
 };
 
-const TrueFalse = ({ question, questionNumber, setQuestionNumber }) => {
+const TrueFalse = ({
+  question,
+  questionNumber,
+  setQuestionNumber,
+  handleAnswerSubmit,
+}) => {
   const [activeAnswer, setActiveAnswer] = useState("");
   const [canClickNext, setCanClickNext] = useState(false);
   const navigate = useNavigate();
-  
+
   const handleAnswerClick = (answer) => {
     setActiveAnswer(answer);
     setCanClickNext(true);
   };
-  
+
   const handleNext = () => {
     if (canClickNext) {
+      const formattedUserAnswer = activeAnswer === true ? "true" : "false";
+      handleAnswerSubmit(formattedUserAnswer);
       // first get the activeAnswer and see if it is correct, then store this bit of information
-      console.log("user clicked ->", activeAnswer, 'correct answer is', question.correct_answer);
+      console.log(
+        "user clicked ->",
+        activeAnswer,
+        "correct answer is",
+        question.correct_answer,
+      );
       // reset these states
       setCanClickNext(false);
       setActiveAnswer("");
@@ -28,7 +40,7 @@ const TrueFalse = ({ question, questionNumber, setQuestionNumber }) => {
       // next sort out moving to the next question
       const nextQuestion = questionNumber + 1;
       setQuestionNumber(nextQuestion);
-      navigate("/question-drop", { replace: true });      
+      navigate("/question-drop", { replace: true });
     }
   };
 
@@ -43,7 +55,6 @@ const TrueFalse = ({ question, questionNumber, setQuestionNumber }) => {
               : "true-false-questions-button"
           }
           type="submit"
-
           onClick={() => handleAnswerClick(true)}
         >
           True
@@ -69,7 +80,7 @@ const TrueFalse = ({ question, questionNumber, setQuestionNumber }) => {
           </button>
         </div>
       </div>
-      </div>
+    </div>
   );
 };
 
