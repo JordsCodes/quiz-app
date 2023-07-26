@@ -1,4 +1,5 @@
-.generate-quiz, h1 {
+.generate-quiz,
+h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -9,7 +10,8 @@
 
 }
 
-.number, .category {
+.number,
+.category {
   display: flex;
   justify-content: space-between;
   width: 300px;
@@ -24,7 +26,8 @@
   cursor: pointer;
 }
 
-.container-one, .container-two {
+.container-one,
+.container-two {
   display: flex;
   justify-content: space-around;
   margin-top: 10px;
@@ -40,7 +43,7 @@
   justify-content: flex-end;
   width: 50%;
   text-align: center;
-} 
+}
 
 .description {
   display: flex;
