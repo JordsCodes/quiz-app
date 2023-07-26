@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useInsertionEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/true-false.css";
 
@@ -21,6 +21,7 @@ const TrueFalse = ({ question, questionNumber, setQuestionNumber }) => {
     if (canClickNext) {
       // first get the activeAnswer and see if it is correct, then store this bit of information
       console.log("user clicked ->", activeAnswer, 'correct answer is', question.correct_answer);
+  
       // reset these states
       setCanClickNext(false);
       setActiveAnswer("");
@@ -28,13 +29,14 @@ const TrueFalse = ({ question, questionNumber, setQuestionNumber }) => {
       // next sort out moving to the next question
       const nextQuestion = questionNumber + 1;
       setQuestionNumber(nextQuestion);
+
       navigate("/question-drop", { replace: true });      
     }
   };
 
   return (
     <div className="question-content">
-      <h1 className="true-false-heading-text">{decode(question.question)}</h1>
+        <h1 className="true-false-heading-text">{decode(question.question)}</h1>
       <div className="button-container">
         <button
           className={
@@ -43,7 +45,6 @@ const TrueFalse = ({ question, questionNumber, setQuestionNumber }) => {
               : "true-false-questions-button"
           }
           type="submit"
-
           onClick={() => handleAnswerClick(true)}
         >
           True
@@ -55,7 +56,6 @@ const TrueFalse = ({ question, questionNumber, setQuestionNumber }) => {
               : "true-false-questions-button"
           }
           type="submit"
-
           onClick={() => handleAnswerClick(false)}
         >
           False
@@ -64,7 +64,7 @@ const TrueFalse = ({ question, questionNumber, setQuestionNumber }) => {
       <div className="next-button-container">
         <div className="nav-button">
           <button className="next-button" type="button" onClick={handleNext}>
-            {/* {questionNumber === question.length - 1 ? 'Finish' : 'Next'} */}
+          {/* {activeAnswer =-= questionNumber.length - 1 ? 'Finish' : 'Next'} */}
             Next
           </button>
         </div>

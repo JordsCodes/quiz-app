@@ -9,7 +9,7 @@ import TrueFalse from "./TrueFalse";
 import QuestionDrop from "./QuestionDrop";
 
 const App = () => {
-  const [questions, setQuestions] = useState([]);
+  const [questions, setQuestions, score] = useState([]);
 
   return (
     <div className="app">
@@ -23,7 +23,7 @@ const App = () => {
         />
         <Route
           path="question-drop"
-          element={<QuestionDrop questions={questions} />}
+          element={<QuestionDrop questions={questions}/>}
         />
         <Route path="/multi-choice" element={<MultipleChoice />} />
         <Route path="/true-false" element={<TrueFalse />} />

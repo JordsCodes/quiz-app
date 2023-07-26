@@ -7,7 +7,7 @@ const QuestionDrop = ({ questions }) => {
   const [questionNumber, setQuestionNumber] = useState(0);
 
   if (questionNumber >= questions.length) {
-    return <QuizEnd />;
+    return <QuizEnd score={score}/>;
   }
 
   // initialise question to be rendered:
