@@ -12,7 +12,6 @@ const GenerateQuiz = ({ questions, setQuestions }) => {
     type: "",
   });
   const [activeDifficulty, setActiveDifficulty] = useState("");
-  //  const [activeType, setActiveType] = useState("");
   const navigate = useNavigate();
 
   const handleAmountChange = (event) => {
@@ -32,11 +31,6 @@ const GenerateQuiz = ({ questions, setQuestions }) => {
     };
     setChoices(change);
   };
-  /* const handleActiveType = (type) => {
-  setActiveType(type);
-  const change = { ...choices, type };
-  setChoices(change);
-}; */
 
   const handleActiveDifficulty = (difficulty) => {
     setActiveDifficulty(difficulty);
@@ -44,19 +38,12 @@ const GenerateQuiz = ({ questions, setQuestions }) => {
     setChoices(change);
   };
 
-  // const handleActiveType = (type) => {
-  //   setActiveType(type);
-  //   const change = { ...choices, type };
-  //   setChoices(change);
-  // };
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     const questionsData = await getQuestion(choices);
     setQuestions(questionsData);
     navigate("/question-drop", { replace: true });
   };
-
 
   return (
     <form>
@@ -173,37 +160,7 @@ const GenerateQuiz = ({ questions, setQuestions }) => {
           </button>
         </div>
       </div>
-      {/*  <div className="description">
-            <span>Select type</span>
-          </div>
-           <div className="container-three">
-            <div>
-              <button
-                className={
-                  activeType === "multiple"
-                    ? "choice-button-active"
-                    : "choice-button"
-                }
-                type="button"
-                onClick={() => handleActiveType("multiple")}
-              >
-                Multiple Choice
-              </button>
-            </div>
-            <div>
-              <button
-                className={
-                  activeType === "boolean"
-                    ? "choice-button-active"
-                    : "choice-button"
-                }
-                type="button"
-                onClick={() => handleActiveType("boolean")}
-              >
-                True or False
-              </button>
-            </div>
-          </div> */}
+
       <div className="container-four">
         <button className="submit-button" type="submit" onClick={handleSubmit}>
           Submit
@@ -212,5 +169,4 @@ const GenerateQuiz = ({ questions, setQuestions }) => {
     </form>
   );
 };
-
 export default GenerateQuiz;

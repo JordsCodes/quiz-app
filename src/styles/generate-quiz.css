@@ -7,7 +7,6 @@ h1 {
   color: #fffffe;
   font-size: 48px;
   text-align: center;
-
 }
 
 .number,
@@ -30,6 +29,7 @@ h1 {
 .container-two {
   display: flex;
   justify-content: space-around;
+  margin: 0 auto;
   margin-top: 10px;
   margin-bottom: 10px;
   width: 50%;
@@ -41,6 +41,7 @@ h1 {
 .container-four {
   display: flex;
   justify-content: flex-end;
+  margin: 0 auto;
   width: 50%;
   text-align: center;
 }

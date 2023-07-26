@@ -27,12 +27,14 @@ const MultipleChoice = ({
     if (canClickNext) {
       handleAnswerSubmit(activeAnswer);
       // first get the activeAnswer and see if it is correct, then store this bit of information
+
       console.log(
         "user clicked ->",
         activeAnswer,
         "correct answer is",
         question.correct_answer,
       );
+
       // reset these states
       setCanClickNext(false);
       setActiveAnswer("");
@@ -41,6 +43,7 @@ const MultipleChoice = ({
 
       const nextQuestion = questionNumber + 1;
       setQuestionNumber(nextQuestion);
+       
       navigate("/question-drop", { replace: true });
     }
   };
