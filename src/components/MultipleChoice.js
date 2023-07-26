@@ -26,7 +26,6 @@ const MultipleChoice = ({
   const handleNext = () => {
     if (canClickNext) {
       handleAnswerSubmit(activeAnswer);
-      // first get the activeAnswer and see if it is correct, then store this bit of information
 
       console.log(
         "user clicked ->",
@@ -35,11 +34,8 @@ const MultipleChoice = ({
         question.correct_answer,
       );
 
-      // reset these states
       setCanClickNext(false);
       setActiveAnswer("");
-
-      // next sort out moving to the next question
 
       const nextQuestion = questionNumber + 1;
       setQuestionNumber(nextQuestion);
@@ -52,7 +48,6 @@ const MultipleChoice = ({
     <div className="multiple-choice">
       <div className="multiple-choice-heading">
         <h1 className="multiple-choice-heading-text">
-          {" "}
           {decode(question.question)}
         </h1>
       </div>
@@ -105,9 +100,9 @@ const MultipleChoice = ({
       <div className="nav-button">
 
         <button
-          className="multiple-choice-questions-button"
+          className="next-button"
           type="button"
-          onClick={handleNext}
+          onClick={handleNext} disabled={activeAnswer === ""}
         >
           Next
         </button>

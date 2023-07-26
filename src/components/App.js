@@ -27,7 +27,7 @@ const App = () => {
         />
         <Route path="/multi-choice" element={<MultipleChoice />} />
         <Route path="/true-false" element={<TrueFalse />} />
-        <Route path="/quiz-end" element={<QuizEnd />} />
+        <Route path="/quiz-end" element={<QuizEnd score={score} totalQuestions={questions.length}/>} />
       </Routes>
     </div>
   );
