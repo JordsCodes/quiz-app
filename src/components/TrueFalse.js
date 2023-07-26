@@ -26,7 +26,6 @@ const TrueFalse = ({
     if (canClickNext) {
       const formattedUserAnswer = activeAnswer === true ? "true" : "false";
       handleAnswerSubmit(formattedUserAnswer);
-      // first get the activeAnswer and see if it is correct, then store this bit of information
 
       console.log(
         "user clicked ->",
@@ -35,11 +34,9 @@ const TrueFalse = ({
         question.correct_answer,
       );
 
-      // reset these states
       setCanClickNext(false);
       setActiveAnswer("");
 
-      // next sort out moving to the next question
       const nextQuestion = questionNumber + 1;
       setQuestionNumber(nextQuestion);
 
@@ -76,12 +73,12 @@ const TrueFalse = ({
         </button>
       </div>
       <div className="next-button-container">
-        <div className="nav-button">
-          <button className="next-button" type="button" onClick={handleNext}>
+        
+        <button className="next-button" type="button" onClick={handleNext} disabled={activeAnswer === ""}> 
           {/* {activeAnswer =-= questionNumber.length - 1 ? 'Finish' : 'Next'} */}
             Next
           </button>
-        </div>
+        
       </div>
     </div>
   );
