@@ -44,18 +44,20 @@ const GenerateQuiz = ({ setQuestions }) => {
     navigate("/question-drop", { replace: true });
   };
 
+  const stopTextEntry = (event) => {
+    event.preventDefault();
+  };
+
   const findMaxQuestions = () => {
     const { category, difficulty } = choices;
 
     const targetCategory = data.trivia_categories.find(
       (target) => target.id === category,
     );
-
     return targetCategory ? targetCategory[difficulty] : null;
   };
 
   const max = findMaxQuestions();
-  console.log(max);
 
   return (
     <form>
@@ -166,13 +168,14 @@ const GenerateQuiz = ({ setQuestions }) => {
           <label htmlFor="num-of-questions">
             <input
               className="number"
-              min="1"
-              max="50"
+              min={1}
+              max={max}
               id="amount"
               name="amount"
               type="number"
               placeholder="No. of questions"
               onChange={handleAmountChange}
+              onKeyDown={stopTextEntry}
             />
           </label>
         </div>
