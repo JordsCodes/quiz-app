@@ -4,7 +4,7 @@ import "../styles/generate-quiz.css";
 import data from "../data/category.json";
 import getQuestion from "../requests/getQuestion";
 
-const GenerateQuiz = ({ questions, setQuestions }) => {
+const GenerateQuiz = ({ setQuestions }) => {
   const [choices, setChoices] = useState({
     amount: "",
     category: "",
@@ -15,7 +15,6 @@ const GenerateQuiz = ({ questions, setQuestions }) => {
   const navigate = useNavigate();
 
   const handleAmountChange = (event) => {
-    const { value } = event.target;
     const change = { ...choices, [event.target.name]: event.target.value };
     setChoices(change);
   };
@@ -44,6 +43,19 @@ const GenerateQuiz = ({ questions, setQuestions }) => {
     setQuestions(questionsData);
     navigate("/question-drop", { replace: true });
   };
+
+  const findMaxQuestions = () => {
+    const { category, difficulty } = choices;
+
+    const targetCategory = data.trivia_categories.find(
+      (target) => target.id === category,
+    );
+
+    return targetCategory ? targetCategory[difficulty] : null;
+  };
+
+  const max = findMaxQuestions();
+  console.log(max);
 
   return (
     <form>

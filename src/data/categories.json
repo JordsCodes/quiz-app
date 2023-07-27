@@ -1,14 +1,14 @@
-{
-  "categories": [
+ [
     {
-      "name": "general-knowledge",
+      "id": 9,
+      "name": "General Knowledge",
       "easy": 122,
       "medium": 123,
       "hard": 60
     },
 
     {
-      "name": "entertainment-books",
+      "name": "Entertainment: Books",
       "easy": 30,
       "medium": 41,
       "hard": 26
@@ -168,4 +168,4 @@
       "hard": 17
     }
   ]
-}
+
