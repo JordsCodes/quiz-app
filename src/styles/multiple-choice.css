@@ -22,7 +22,8 @@
   border: none;
   border-radius: 5px;
   background-color: #f9bc60;
-  color: #001e1d;;
+  color: #001e1d;
+  ;
   width: 300px;
   height: 150px;
   font-size: 24px;
@@ -30,14 +31,16 @@
 }
 
 .multiple-choice-questions-button:hover {
- background-color: white;
+  background-color: white;
+  transform: scale(0.9);
 }
 
 .multiple-choice-questions-button-active {
   border: dashed;
   border-radius: 5px;
   background-color: #f9bc60;
-  color: #001e1d;;
+  color: #001e1d;
+  ;
   width: 300px;
   height: 150px;
   font-size: 24px;

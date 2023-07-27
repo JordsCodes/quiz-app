@@ -29,6 +29,7 @@
   width: 300px;
   height: 150px;
   font-size: 24px;
+  cursor: pointer;
 }
 
 .true-false-questions-button-active {
@@ -47,6 +48,7 @@
 
 .true-false-questions-button:hover {
   background-color: white;
+  transform: scale(0.9);
 }
 
 .next-button-container {
@@ -63,6 +65,7 @@
   width: 200px;
   height: 75px;
   font-size: 24px;
+  cursor: pointer;
 }
 
   .next-button:disabled {
@@ -75,4 +78,5 @@
 
 .next-button:hover {
   background-color: white;
+  transform: scale(0.9);
 }

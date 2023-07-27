@@ -1,6 +1,7 @@
 import React from "react";
 import "../styles/quiz-end.css";
 import { Link } from "react-router-dom";
+import Confetti from "react-confetti";
 
 
 const QuizEnd = ({ score, totalQuestions }) => {
@@ -12,6 +13,11 @@ const QuizEnd = ({ score, totalQuestions }) => {
         <h2>
           You scored {score}/{totalQuestions}.
         </h2>
+        <Confetti
+          width={window.innerWidth}
+          height={window.innerHeight}
+          recycle={false}
+        />
       </div>
         <div className="end-bttns-container">
           <Link to="/">
