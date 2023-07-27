@@ -12,10 +12,11 @@ const GenerateQuiz = ({ questions, setQuestions }) => {
     type: "",
   });
   const [activeDifficulty, setActiveDifficulty] = useState("");
+  const [val, setVal] = useState("");
   const navigate = useNavigate();
 
   const handleAmountChange = (event) => {
-    const { value } = event.target;
+    setVal((v) => (event.target.validity.valid ? event.target.value : v))
     const change = { ...choices, [event.target.name]: event.target.value };
     setChoices(change);
   };
@@ -154,11 +155,13 @@ const GenerateQuiz = ({ questions, setQuestions }) => {
           <label htmlFor="num-of-questions">
             <input
               className="number"
-              min="1"
-              max="50"
+              min={1}
+              max={50}
               id="amount"
               name="amount"
               type="number"
+              pattern="[1-50]*"
+              value={val}
               placeholder="No. of questions"
               onChange={handleAmountChange}
             />
