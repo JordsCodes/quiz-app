@@ -63,9 +63,9 @@
   font-size: 24px;
 }
 
-  .next-button:disabled {
-    background-color: grey;
-    color: #666666;
-    cursor: no-drop;
-    pointer-events: none;
-  }
+.next-button:disabled {
+  background-color: grey;
+  color: #666666;
+  cursor: no-drop;
+  pointer-events: none;
+}
