@@ -1,28 +1,171 @@
 {
-  "category_question_count": [
-    { "total_question_count": "https://opentdb.com/api_count.php?category=9" },
-    { "total_question_count": "https://opentdb.com/api_count.php?category=10" },
-    { "total_question_count": "https://opentdb.com/api_count.php?category=11" },
-    { "total_question_count": "https://opentdb.com/api_count.php?category=12" },
-    { "total_question_count": "https://opentdb.com/api_count.php?category=13" },
-    { "total_question_count": "https://opentdb.com/api_count.php?category=14" },
-    { "total_question_count": "https://opentdb.com/api_count.php?category=15" },
-    { "total_question_count": "https://opentdb.com/api_count.php?category=16" },
-    { "total_question_count": "https://opentdb.com/api_count.php?category=17" },
-    { "total_question_count": "https://opentdb.com/api_count.php?category=18" },
-    { "total_question_count": "https://opentdb.com/api_count.php?category=19" },
-    { "total_question_count": "https://opentdb.com/api_count.php?category=20" },
-    { "total_question_count": "https://opentdb.com/api_count.php?category=21" },
-    { "total_question_count": "https://opentdb.com/api_count.php?category=22" },
-    { "total_question_count": "https://opentdb.com/api_count.php?category=23" },
-    { "total_question_count": "https://opentdb.com/api_count.php?category=24" },
-    { "total_question_count": "https://opentdb.com/api_count.php?category=25" },
-    { "total_question_count": "https://opentdb.com/api_count.php?category=26" },
-    { "total_question_count": "https://opentdb.com/api_count.php?category=27" },
-    { "total_question_count": "https://opentdb.com/api_count.php?category=28" },
-    { "total_question_count": "https://opentdb.com/api_count.php?category=29" },
-    { "total_question_count": "https://opentdb.com/api_count.php?category=30" },
-    { "total_question_count": "https://opentdb.com/api_count.php?category=31" },
-    { "total_question_count": "https://opentdb.com/api_count.php?category=32" }
+  "categories": [
+    {
+      "name": "general-knowledge",
+      "easy": 122,
+      "medium": 123,
+      "hard": 60
+    },
+
+    {
+      "name": "entertainment-books",
+      "easy": 30,
+      "medium": 41,
+      "hard": 26
+    },
+
+    {
+      "name": "entertainment-film",
+      "easy": 87,
+      "medium": 118,
+      "hard": 42
+    },
+
+    {
+      "name": "entertainment-music",
+      "easy": 107,
+      "medium": 189,
+      "hard": 68
+    },
+
+    {
+      "name": "entertainment-musicals-theatres",
+      "easy": 8,
+      "medium": 13,
+      "hard": 10
+    },
+
+    {
+      "name": "entertainment-television",
+      "easy": 69,
+      "medium": 72,
+      "hard": 29
+    },
+
+    {
+      "name": "entertainment-video-games",
+      "easy": 324,
+      "medium": 448,
+      "hard": 188
+    },
+
+    {
+      "name": "entertainment-board-games",
+      "easy": 19,
+      "medium": 15,
+      "hard": 25
+    },
+
+    {
+      "name": "science-nature",
+      "easy": 61,
+      "medium": 100,
+      "hard": 68
+    },
+
+    {
+      "name": "science-computers",
+      "easy": 48,
+      "medium": 74,
+      "hard": 37
+    },
+
+    {
+      "name": "science-mathematics",
+      "easy": 14,
+      "medium": 23,
+      "hard": 16
+    },
+
+    {
+      "name": "mythology",
+      "easy": 14,
+      "medium": 23,
+      "hard": 16
+    },
+
+    {
+      "name": "sports",
+      "easy": 48,
+      "medium": 64,
+      "hard": 20
+    },
+
+    {
+      "name": "geography",
+      "easy": 80,
+      "medium": 139,
+      "hard": 56
+    },
+
+    {
+      "name": "history",
+      "easy": 68,
+      "medium": 162,
+      "hard": 80
+    },
+
+    {
+      "name": "politics",
+      "easy": 18,
+      "medium": 26,
+      "hard": 15
+    },
+
+    {
+      "name": "art",
+      "easy": 9,
+      "medium": 11,
+      "hard": 9
+    },
+
+    {
+      "name": "celebrities",
+      "easy": 13,
+      "medium": 31,
+      "hard": 8
+    },
+
+    {
+      "name": "animals",
+      "easy": 27,
+      "medium": 30,
+      "hard": 18
+    },
+
+    {
+      "name": "vehicles",
+      "easy": 21,
+      "medium": 32,
+      "hard": 18
+    },
+
+    {
+      "name": "entertainment-comics",
+      "easy": 15,
+      "medium": 33,
+      "hard": 19
+    },
+
+    {
+      "name": "science-gadgets",
+      "easy": 9,
+      "medium": 10,
+      "hard": 5
+    },
+
+    {
+      "name": "science-japanese-anime-manga",
+      "easy": 59,
+      "medium": 82,
+      "hard": 43
+    },
+
+    {
+      "name": "science-cartoon-animations",
+      "easy": 32,
+      "medium": 40,
+      "hard": 17
+    }
   ]
 }

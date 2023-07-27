@@ -75,7 +75,7 @@ const TrueFalse = ({
       <div className="next-button-container">
         
         <button className="next-button" type="button" onClick={handleNext} disabled={activeAnswer === ""}> 
-          {/* {activeAnswer =-= questionNumber.length - 1 ? 'Finish' : 'Next'} */}
+          {/* {questionNumber >= question.length ? 'Finish' : 'Next'} */}
             Next
           </button>
         
