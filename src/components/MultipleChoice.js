@@ -39,7 +39,6 @@ const MultipleChoice = ({
 
       const nextQuestion = questionNumber + 1;
       setQuestionNumber(nextQuestion);
-       
       navigate("/question-drop", { replace: true });
     }
   };

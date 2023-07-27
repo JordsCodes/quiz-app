@@ -50,21 +50,9 @@ const GenerateQuiz = ({ questions, setQuestions }) => {
       <div className="generate-quiz">
         <h1>Generate Quiz</h1>
         <div className="description">
-          <span>Select number of questions and category</span>
+          <span>Select category</span>
         </div>
         <div className="container-one">
-          <label htmlFor="num-of-questions">
-            <input
-              className="number"
-              min="1"
-              max="50"
-              id="amount"
-              name="amount"
-              type="number"
-              placeholder="No. of questions"
-              onChange={handleAmountChange}
-            />
-          </label>
           <label htmlFor="category">
             <select
               className="category"
@@ -117,51 +105,67 @@ const GenerateQuiz = ({ questions, setQuestions }) => {
         <div className="description">
           <span>Select level of difficulty</span>
         </div>
+        <div className="container-two">
+          <div>
+            <button
+              className={
+                activeDifficulty === "easy"
+                  ? "choice-button-active"
+                  : "choice-button"
+              }
+              type="button"
+              name="difficulty"
+              onClick={() => handleActiveDifficulty("easy")}
+            >
+              Easy
+            </button>
+          </div>
+          <div>
+            <button
+              className={
+                activeDifficulty === "medium"
+                  ? "choice-button-active"
+                  : "choice-button"
+              }
+              type="button"
+              onClick={() => handleActiveDifficulty("medium")}
+            >
+              Medium
+            </button>
+          </div>
+          <div>
+            <button
+              className={
+                activeDifficulty === "hard"
+                  ? "choice-button-active"
+                  : "choice-button"
+              }
+              type="button"
+              onClick={() => handleActiveDifficulty("hard")}
+            >
+              Hard
+            </button>
+          </div>
+        </div>
+        <div className="description">
+          <span>Select number of questions</span>
+        </div>
+        <div className="container-one">
+          <label htmlFor="num-of-questions">
+            <input
+              className="number"
+              min="1"
+              max="50"
+              id="amount"
+              name="amount"
+              type="number"
+              placeholder="No. of questions"
+              onChange={handleAmountChange}
+            />
+          </label>
+        </div>
       </div>
-      <div className="container-two">
-        <div>
-          <button
-            className={
-              activeDifficulty === "easy"
-                ? "choice-button-active"
-                : "choice-button"
-            }
-            type="button"
-            name="difficulty"
-            onClick={() => handleActiveDifficulty("easy")}
-          >
-            Easy
-          </button>
-        </div>
-        <div>
-          <button
-            className={
-              activeDifficulty === "medium"
-                ? "choice-button-active"
-                : "choice-button"
-            }
-            type="button"
-            onClick={() => handleActiveDifficulty("medium")}
-          >
-            Medium
-          </button>
-        </div>
-        <div>
-          <button
-            className={
-              activeDifficulty === "hard"
-                ? "choice-button-active"
-                : "choice-button"
-            }
-            type="button"
-            onClick={() => handleActiveDifficulty("hard")}
-          >
-            Hard
-          </button>
-        </div>
-      </div>
-
-      <div className="container-four">
+      <div className="container-three">
         <button className="submit-button" type="submit" onClick={handleSubmit}>
           Submit
         </button>

@@ -13,7 +13,7 @@ h1 {
 .category {
   display: flex;
   justify-content: space-between;
-  width: 300px;
+  width: 500px;
   height: 55px;
   border: none;
   border-radius: 5px;
@@ -38,7 +38,7 @@ h1 {
   border-color: #abd1c6;
 }
 
-.container-four {
+.container-three {
   display: flex;
   justify-content: flex-end;
   margin: 0 auto;
