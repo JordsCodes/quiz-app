@@ -167,7 +167,12 @@ const GenerateQuiz = ({ setQuestions }) => {
         <div className="container-one">
           <label htmlFor="num-of-questions">
             <input
-              className="number"
+              readOnly={!choices.category && !choices.difficulty}
+              className={
+                choices.category && choices.difficulty
+                  ? "number"
+                  : "number-grey"
+              }
               min={1}
               max={max}
               id="amount"

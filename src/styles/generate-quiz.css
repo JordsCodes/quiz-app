@@ -25,6 +25,21 @@ h1 {
   cursor: pointer;
 }
 
+.number-grey {
+  display: flex;
+  justify-content: space-between;
+  width: 500px;
+  height: 55px;
+  border: none;
+  border-radius: 5px;
+  padding: auto;
+  font-size: 24px;
+  background-color: grey;
+  color: #001e1d;
+  text-align: center;
+  cursor: pointer;
+}
+
 .container-one,
 .container-two {
   display: flex;
