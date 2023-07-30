@@ -4,7 +4,7 @@ import "../styles/generate-quiz.css";
 import data from "../data/category.json";
 import getQuestion from "../requests/getQuestion";
 
-const GenerateQuiz = ({ questions, setQuestions }) => {
+const GenerateQuiz = ({ setQuestions }) => {
   const [choices, setChoices] = useState({
     amount: "",
     category: "",
@@ -12,11 +12,9 @@ const GenerateQuiz = ({ questions, setQuestions }) => {
     type: "",
   });
   const [activeDifficulty, setActiveDifficulty] = useState("");
-  const [val, setVal] = useState("");
   const navigate = useNavigate();
 
   const handleAmountChange = (event) => {
-    setVal((v) => (event.target.validity.valid ? event.target.value : v))
     const change = { ...choices, [event.target.name]: event.target.value };
     setChoices(change);
   };
@@ -45,6 +43,21 @@ const GenerateQuiz = ({ questions, setQuestions }) => {
     setQuestions(questionsData);
     navigate("/question-drop", { replace: true });
   };
+
+  const stopTextEntry = (event) => {
+    event.preventDefault();
+  };
+
+  const findMaxQuestions = () => {
+    const { category, difficulty } = choices;
+
+    const targetCategory = data.trivia_categories.find(
+      (target) => target.id === category,
+    );
+    return targetCategory ? targetCategory[difficulty] : null;
+  };
+
+  const max = findMaxQuestions();
 
   return (
     <form>
@@ -154,9 +167,14 @@ const GenerateQuiz = ({ questions, setQuestions }) => {
         <div className="container-one">
           <label htmlFor="num-of-questions">
             <input
-              className="number"
+              readOnly={!choices.category && !choices.difficulty}
+              className={
+                choices.category && choices.difficulty
+                  ? "number"
+                  : "number-grey"
+              }
               min={1}
-              max={50}
+              max={max > 50 ? 50 : max}
               id="amount"
               name="amount"
               type="number"
@@ -164,6 +182,7 @@ const GenerateQuiz = ({ questions, setQuestions }) => {
               value={val}
               placeholder="No. of questions"
               onChange={handleAmountChange}
+              onKeyDown={stopTextEntry}
             />
           </label>
         </div>
