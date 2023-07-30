@@ -13,7 +13,8 @@ const QuestionDrop = ({ questions }) => {
 
   const handleAnswerSubmit = (userAnswer) => {
     const currentQuestion = questions[questionNumber];
-    const formattedUserAnswer = typeof userAnswer === "string" ? userAnswer.toLowerCase() : userAnswer;
+    const formattedUserAnswer =
+      typeof userAnswer === "string" ? userAnswer.toLowerCase() : userAnswer;
     const formattedCorrectAnswer = currentQuestion.correct_answer.toLowerCase();
 
     if (formattedUserAnswer === formattedCorrectAnswer) {
@@ -27,7 +28,7 @@ const QuestionDrop = ({ questions }) => {
   // initialise answers array:
   const answers = [].concat(
     question.incorrect_answers,
-    question.correct_answer,
+    question.correct_answer
   );
   // randomise the order of the answers:
   for (let i = 0; i < answers.length; i += 1) {
@@ -36,21 +37,27 @@ const QuestionDrop = ({ questions }) => {
   // return either a MultipleChoice or TrueFalse component:
   if (question.type === "boolean") {
     return (
-      <TrueFalse
-        question={question}
-        questionNumber={questionNumber}
-        setQuestionNumber={setQuestionNumber}
-        handleAnswerSubmit={handleAnswerSubmit}
-      />
+      <div>
+        {questionNumber < questions.length && (
+          <div>
+            <h2>Question {questionNumber + 1}</h2>
+            <TrueFalse
+              question={question}
+              questionNumber={questionNumber}
+              setQuestionNumber={setQuestionNumber}
+              handleAnswerSubmit={handleAnswerSubmit}
+            />
+          </div>
+        )}
+      </div>
     );
   }
-
 
   return (
     <div>
       {questionNumber < questions.length && (
         <div>
-          <h2>Question {questionNumber + 1}</h2>
+          <h2>Question {questionNumber + 1} </h2>
           <MultipleChoice
             question={question}
             answers={answers}
