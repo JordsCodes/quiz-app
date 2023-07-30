@@ -174,7 +174,7 @@ const GenerateQuiz = ({ setQuestions }) => {
                   : "number-grey"
               }
               min={1}
-              max={max}
+              max={max > 50 ? 50 : max}
               id="amount"
               name="amount"
               type="number"
