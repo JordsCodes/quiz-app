@@ -7,12 +7,14 @@ import MultipleChoice from "./MultipleChoice";
 import QuizEnd from "./QuizEnd";
 import TrueFalse from "./TrueFalse";
 import QuestionDrop from "./QuestionDrop";
+import NavBar from "./NavBar";
 
 const App = () => {
   const [questions, setQuestions, score] = useState([]);
 
   return (
     <div className="app">
+      <NavBar />
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route
