@@ -28,7 +28,7 @@ const QuestionDrop = ({ questions }) => {
   // initialise answers array:
   const answers = [].concat(
     question.incorrect_answers,
-    question.correct_answer
+    question.correct_answer,
   );
   // randomise the order of the answers:
   for (let i = 0; i < answers.length; i += 1) {

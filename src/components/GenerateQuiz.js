@@ -179,7 +179,6 @@ const GenerateQuiz = ({ setQuestions }) => {
               name="amount"
               type="number"
               pattern="[1-50]*"
-              value={val}
               placeholder="No. of questions"
               onChange={handleAmountChange}
               onKeyDown={stopTextEntry}
