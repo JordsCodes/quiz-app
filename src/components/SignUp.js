@@ -29,7 +29,7 @@ const SignUp = (onSetUser) => {
         /* toast.success('some text'); */
         onSetUser(user);
         navigate('/'); 
-      })
+      }
       .catch((error) => {
          toast.error('There was a problem creating the account.');
       });
