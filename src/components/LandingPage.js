@@ -6,7 +6,7 @@ const LandingPage = () => {
   const navigate = useNavigate();
 
   const handleGenerateQuizClick = () => {
-    navigate("/generate-quiz");
+    navigate("/sign-up");
   }
 
   return (
