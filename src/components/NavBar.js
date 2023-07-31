@@ -13,7 +13,7 @@ const NavBar = () => {
           </Link>
         </li>
         <li>
-          <Link className="navbar-links-item" to="leaderboard">
+          <Link className="navbar-links-item" to="/leaderboard">
             {" "}
             Leaderboard
           </Link>
