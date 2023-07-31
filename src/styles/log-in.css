@@ -1,0 +1,34 @@
+.form {
+  margin: 0px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 500px;
+  height: 250px;
+  font-size: 24px;
+}
+
+.text {
+  color: #fffffe;
+}
+
+.username {
+  margin-left: 5px;
+}
+
+.form-input {
+  height: 25px;
+}
+
+.button {
+  color: black;
+  margin-top: 20px;
+  width: 100px;
+  background-color: #f9bc60;
+  font-size: 22px;
+  text-decoration: none;
+  border-radius: 5px;
+  padding: 10px;
+  text-align: center;
+}
