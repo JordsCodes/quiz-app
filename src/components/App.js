@@ -12,7 +12,6 @@ import LogIn from "./LogIn";
 import SignUp from "./SignUp";
 import Leaderboard from "./Leaderboard";
 
-
 const App = () => {
   const [questions, setQuestions, score] = useState([]);
 
