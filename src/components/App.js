@@ -8,6 +8,8 @@ import QuizEnd from "./QuizEnd";
 import TrueFalse from "./TrueFalse";
 import QuestionDrop from "./QuestionDrop";
 import NavBar from "./NavBar";
+import LogIn from "./LogIn";
+import SignUp from "./SignUp";
 
 const App = () => {
   const [questions, setQuestions, score] = useState([]);
@@ -17,6 +19,8 @@ const App = () => {
       <NavBar />
       <Routes>
         <Route path="/" element={<LandingPage />} />
+        <Route path="log-in" element={<LogIn />} />
+        <Route path="sign-up" element={<SignUp />} />
         <Route
           path="generate-quiz"
           element={
