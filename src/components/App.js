@@ -8,6 +8,7 @@ import QuizEnd from "./QuizEnd";
 import TrueFalse from "./TrueFalse";
 import QuestionDrop from "./QuestionDrop";
 import NavBar from "./NavBar";
+import Leaderboard from "./Leaderboard";
 
 const App = () => {
   const [questions, setQuestions, score] = useState([]);
@@ -33,6 +34,7 @@ const App = () => {
           path="/quiz-end"
           element={<QuizEnd score={score} totalQuestions={questions.length} />}
         />
+        <Route path="/leaderboard" element={<Leaderboard />} />
       </Routes>
     </div>
   );

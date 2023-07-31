@@ -1,0 +1,33 @@
+.leaderboard {
+    display: flex;
+    flex-direction: column;
+    font-size: 48px;
+    color: white;
+}
+
+.heading {
+    margin: 80px;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.leaderboard-header {
+    font-size: 50px;
+    font-weight: 300px;
+    margin-left: 20px;
+    margin-top: 70px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    text-decoration: underline;
+}
+
+.score-data {
+    font-size: 50px;
+    font-weight: 300px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+    margin-left: 50px;
+}
