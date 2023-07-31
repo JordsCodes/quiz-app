@@ -45,7 +45,7 @@ const QuizEnd = ({ score, totalQuestions }) => {
             Back to Home
           </button>
         </Link>
-        <Link to="/">
+        <Link to="/leaderboard">
           <button className="end-page-bttn" type="button">
             View Leader board
           </button>
