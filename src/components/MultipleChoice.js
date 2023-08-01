@@ -97,11 +97,11 @@ const MultipleChoice = ({
         </button>
       </div>
       <div className="nav-button">
-
         <button
           className="next-button"
           type="button"
-          onClick={handleNext} disabled={activeAnswer === ""}
+          onClick={handleNext}
+          disabled={activeAnswer === ""}
         >
           Next
         </button>

@@ -1,4 +1,4 @@
-import React, { useEffect, useInsertionEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/true-false.css";
 
@@ -41,13 +41,12 @@ const TrueFalse = ({
       setQuestionNumber(nextQuestion);
 
       navigate("/question-drop", { replace: true });
-
     }
   };
 
   return (
     <div className="question-content">
-        <h1 className="true-false-heading-text">{decode(question.question)}</h1>
+      <h1 className="true-false-heading-text">{decode(question.question)}</h1>
       <div className="button-container">
         <button
           className={
@@ -73,12 +72,15 @@ const TrueFalse = ({
         </button>
       </div>
       <div className="next-button-container">
-        
-        <button className="next-button" type="button" onClick={handleNext} disabled={activeAnswer === ""}> 
+        <button
+          className="next-button"
+          type="button"
+          onClick={handleNext}
+          disabled={activeAnswer === ""}
+        >
           {/* {questionNumber >= question.length ? 'Finish' : 'Next'} */}
-            Next
-          </button>
-        
+          Next
+        </button>
       </div>
     </div>
   );

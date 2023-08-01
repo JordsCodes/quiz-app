@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../styles/sign-in.css";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
 import { auth } from "../config/firebase";
 
 const SignUp = ({ setUser }) => {
@@ -16,10 +17,12 @@ const SignUp = ({ setUser }) => {
       .then((userCredential) => {
         const { user } = userCredential;
         setUser(user);
+        toast.success("Welcome to QuizBiz!");
         navigate("/");
       })
       .catch((error) => {
         console.log(error.message);
+        toast.error(error.message);
       });
   };
 
@@ -54,8 +57,9 @@ const SignUp = ({ setUser }) => {
         />
       </label>
       <button className="button" type="submit">
-        Log In
+        Sign Up
       </button>
+      <Toaster />
     </form>
   );
 };
