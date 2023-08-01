@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "../styles/sign-in.css";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../config/firebase";
 
@@ -17,7 +16,6 @@ const SignUp = ({ setUser }) => {
       .then((userCredential) => {
         const { user } = userCredential;
         setUser(user);
-        console.log(user);
         navigate("/");
       })
       .catch((error) => {

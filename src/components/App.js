@@ -31,10 +31,10 @@ const App = () => {
 
   return (
     <div className="app">
-      <NavBar />
+      <NavBar setUser={setUser} user={user} />
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="log-in" element={<LogIn />} />
+        <Route path="log-in" element={<LogIn setUser={setUser}/>} />
         <Route path="sign-up" element={<SignUp setUser={setUser} />} />
         <Route
           path="generate-quiz"
