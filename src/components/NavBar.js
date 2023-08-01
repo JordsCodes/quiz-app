@@ -1,8 +1,22 @@
 import React from "react";
 import "../styles/navbar.css";
 import { Link } from "react-router-dom";
+import { signOut } from "firebase/auth";
+import { auth } from "../config/firebase";
 
-const NavBar = () => {
+const NavBar = ({ user, setUser }) => {
+  const handleLogOut = () => {
+    signOut(auth)
+      .then(() => {
+        // Sign-out successful.
+        setUser(null);
+      })
+      .catch((error) => {
+        console.error(error);
+        // An error happened.
+      });
+  };
+
   return (
     <div className="navbar">
       <ul className="navbar-links">
@@ -19,22 +33,28 @@ const NavBar = () => {
           </Link>
         </li>
         <li>
-          <Link className="navbar-links-item" to="sign-up">
-            {" "}
-            Sign Up{" "}
-          </Link>
+          {user ? null : (
+            <Link className="navbar-links-item" to="sign-up">
+              {" "}
+              Sign Up{" "}
+            </Link>
+          )}
         </li>
         <li>
-          <Link className="navbar-links-item" to="log-in">
-            {" "}
-            Log In
-          </Link>
+          {user ? null : (
+            <Link className="navbar-links-item" to="log-in">
+              {" "}
+              Log In
+            </Link>
+          )}
         </li>
         <li>
-          <Link className="navbar-links-item" to="/">
-            {" "}
-            Log Out
-          </Link>
+          {user ? (
+            <Link className="navbar-links-item" to="/" onClick={handleLogOut}>
+              {" "}
+              Log Out
+            </Link>
+          ) : null}
         </li>
       </ul>
     </div>

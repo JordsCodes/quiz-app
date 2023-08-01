@@ -7,7 +7,7 @@ const LandingPage = () => {
 
   const handleGenerateQuizClick = () => {
     navigate("/generate-quiz");
-  }
+  };
 
   return (
     <div className="landing-page">
@@ -28,7 +28,7 @@ const LandingPage = () => {
           Generate Quiz
         </button>
       </div>
-    </div >
+    </div>
   );
 };
 
