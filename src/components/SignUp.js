@@ -1,17 +1,59 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/sign-in.css";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
+import { auth } from "../config/firebase";
 
-const SignUp = () => {
+const SignUp = ({ setUser }) => {
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+
+  const navigate = useNavigate();
+
+  const onSubmit = (event) => {
+    event.preventDefault();
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const { user } = userCredential;
+        setUser(user);
+        console.log(user);
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
+
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
+  };
+
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+  };
+
   return (
-    <form className="form">
+    <form className="form" onSubmit={onSubmit}>
       <h2 className="text">Sign Up</h2>
-      <label className="label" htmlFor="username">
+      <label className="label" htmlFor="email">
         <p className="text">Email:</p>
-        <input className="form-input" id="username" name="username" />
+        <input
+          className="form-input"
+          id="email"
+          name="email"
+          onChange={handleEmailChange}
+        />
       </label>
       <label className="label" htmlFor="password">
         <p className="text">Password:</p>
-        <input className="form-input" type="password" name="password" />
+        <input
+          className="form-input"
+          id="password"
+          type="password"
+          name="password"
+          onChange={handlePasswordChange}
+        />
       </label>
       <button className="button" type="submit">
         Log In

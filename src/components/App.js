@@ -1,6 +1,7 @@
 import "../styles/app.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
+import { onAuthStateChanged } from "firebase/auth";
 import GenerateQuiz from "./GenerateQuiz";
 import LandingPage from "./LandingPage";
 import MultipleChoice from "./MultipleChoice";
@@ -11,9 +12,22 @@ import NavBar from "./NavBar";
 import LogIn from "./LogIn";
 import SignUp from "./SignUp";
 import Leaderboard from "./Leaderboard";
+import { auth } from "../config/firebase";
 
 const App = () => {
   const [questions, setQuestions, score] = useState([]);
+
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (firebaseUser) => {
+      if (firebaseUser) {
+        setUser(firebaseUser);
+      } else {
+        setUser(null);
+      }
+    });
+  }, []);
 
   return (
     <div className="app">
@@ -21,7 +35,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="log-in" element={<LogIn />} />
-        <Route path="sign-up" element={<SignUp />} />
+        <Route path="sign-up" element={<SignUp setUser={setUser} />} />
         <Route
           path="generate-quiz"
           element={
