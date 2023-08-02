@@ -16,7 +16,7 @@ import { auth } from "../config/firebase";
 
 const App = () => {
   const [questions, setQuestions, score] = useState([]);
-
+  const [username, setUsername] = useState();
   const [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -35,7 +35,17 @@ const App = () => {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="log-in" element={<LogIn setUser={setUser} />} />
-        <Route path="sign-up" element={<SignUp setUser={setUser} />} />
+        <Route
+          path="sign-up"
+          element={
+            <SignUp
+              setUser={setUser}
+              user={user}
+              username={username}
+              setUsername={setUsername}
+            />
+          }
+        />
         <Route
           path="generate-quiz"
           element={
@@ -44,13 +54,21 @@ const App = () => {
         />
         <Route
           path="question-drop"
-          element={<QuestionDrop questions={questions} />}
+          element={
+            <QuestionDrop questions={questions} score={score} user={user} />
+          }
         />
         <Route path="/multi-choice" element={<MultipleChoice />} />
         <Route path="/true-false" element={<TrueFalse />} />
         <Route
           path="/quiz-end"
-          element={<QuizEnd score={score} totalQuestions={questions.length} />}
+          element={
+            <QuizEnd
+              score={score}
+              totalQuestions={questions.length}
+              user={user}
+            />
+          }
         />
         <Route path="/leaderboard" element={<Leaderboard />} />
       </Routes>
