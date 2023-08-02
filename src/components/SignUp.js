@@ -59,7 +59,7 @@ const SignUp = ({ setUser }) => {
       <button className="button" type="submit">
         Sign Up
       </button>
-      <Toaster />
+     
     </form>
   );
 };

@@ -3,17 +3,19 @@ import "../styles/navbar.css";
 import { Link } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import { auth } from "../config/firebase";
+import { toHaveStyle } from "@testing-library/jest-dom/matchers";
+import toast, { Toaster } from "react-hot-toast";
 
 const NavBar = ({ user, setUser }) => {
   const handleLogOut = () => {
     signOut(auth)
       .then(() => {
-        // Sign-out successful.
+        toast.success("Successfully logged out")
         setUser(null);
       })
       .catch((error) => {
         console.error(error);
-        // An error happened.
+        toast.error(error.message);
       });
   };
 

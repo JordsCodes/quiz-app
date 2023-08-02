@@ -13,6 +13,7 @@ import LogIn from "./LogIn";
 import SignUp from "./SignUp";
 import Leaderboard from "./Leaderboard";
 import { auth } from "../config/firebase";
+import toast, { Toaster } from "react-hot-toast";
 
 const App = () => {
   const [questions, setQuestions, score] = useState([]);
@@ -31,6 +32,23 @@ const App = () => {
 
   return (
     <div className="app">
+      <Toaster
+      toastOptions={{
+        success: {
+          style: {
+            background: 'green',
+            textWeight: 'bold',
+            color: 'white',
+          },
+        },
+        error: {
+          style: {
+            background: 'red',
+            textWeight: 'bold',
+            color: 'white',
+          },
+        },
+      }}/>
       <NavBar setUser={setUser} user={user} />
       <Routes>
         <Route path="/" element={<LandingPage />} />
