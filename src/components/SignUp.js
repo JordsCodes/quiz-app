@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import "../styles/sign-in.css";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import { auth } from "../config/firebase";
 
 const SignUp = ({ setUser }) => {
   const [email, setEmail] = useState();
+  const [username, setUsername] = useState();
   const [password, setPassword] = useState();
 
   const navigate = useNavigate();
@@ -17,6 +18,9 @@ const SignUp = ({ setUser }) => {
       .then((userCredential) => {
         const { user } = userCredential;
         setUser(user);
+        updateProfile(auth.currentUser, {
+          displayName: username,
+        });
         toast.success("Welcome to QuizBiz!");
         navigate("/");
       })
@@ -28,6 +32,10 @@ const SignUp = ({ setUser }) => {
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
+  };
+
+  const handleUsernameChange = (event) => {
+    setUsername(event.target.value);
   };
 
   const handlePasswordChange = (event) => {
@@ -44,6 +52,15 @@ const SignUp = ({ setUser }) => {
           id="email"
           name="email"
           onChange={handleEmailChange}
+        />
+      </label>
+      <label className="label" htmlFor="username">
+        <p className="text">Username:</p>
+        <input
+          className="form-input"
+          id="username"
+          name="username"
+          onChange={handleUsernameChange}
         />
       </label>
       <label className="label" htmlFor="password">

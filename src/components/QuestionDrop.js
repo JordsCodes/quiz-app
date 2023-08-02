@@ -1,13 +1,40 @@
 import React, { useState } from "react";
+import { doc, setDoc, getDoc } from "firebase/firestore";
 import MultipleChoice from "./MultipleChoice";
 import QuizEnd from "./QuizEnd";
 import TrueFalse from "./TrueFalse";
+import { db } from "../config/firebase";
 
-const QuestionDrop = ({ questions }) => {
+const QuestionDrop = ({ questions, user }) => {
   const [questionNumber, setQuestionNumber] = useState(0);
   const [score, setScore] = useState(0);
 
+  const sendScoreToDb = async () => {
+    const userRef = doc(db, "users", user.uid);
+    const docRef = doc(db, "users", user.uid);
+    const docSnap = await getDoc(docRef);
+    const percentage = (score / questions.length) * 100;
+
+    if (docSnap.exists()) {
+      const newTotal = score + docSnap.data().total_score;
+      const newAverage = (docSnap.data().average_percentage + percentage) / 2;
+      await setDoc(userRef, {
+        username: user.displayName,
+        total_score: newTotal,
+        average_percentage: newAverage,
+      });
+    } else {
+      // docSnap.data() will be undefined in this case
+      await setDoc(userRef, {
+        username: user.displayName,
+        total_score: score,
+        average_percentage: percentage,
+      });
+    }
+  };
+
   if (questionNumber >= questions.length) {
+    sendScoreToDb();
     return <QuizEnd score={score} totalQuestions={questions.length} />;
   }
 
