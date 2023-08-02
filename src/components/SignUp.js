@@ -3,8 +3,7 @@ import "../styles/sign-in.css";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
-import { doc, setDoc } from "firebase/firestore";
-import { auth, db } from "../config/firebase";
+import { auth } from "../config/firebase";
 
 const SignUp = ({ setUser }) => {
   const [email, setEmail] = useState();
@@ -13,19 +12,12 @@ const SignUp = ({ setUser }) => {
 
   const navigate = useNavigate();
 
-  const addUserToDB = async (user) => {
-    await setDoc(doc(db, "users", user.uid), {
-      username,
-    });
-  };
-
   const onSubmit = (event) => {
     event.preventDefault();
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const { user } = userCredential;
         setUser(user);
-        addUserToDB(user);
         updateProfile(auth.currentUser, {
           displayName: username,
         });
