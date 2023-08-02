@@ -3,11 +3,17 @@ import "../styles/quiz-end.css";
 import { Link } from "react-router-dom";
 import Confetti from "react-confetti";
 import { useSpring, animated } from "react-spring";
+import { auth } from "../config/firebase";
 
 const QuizEnd = ({ score, totalQuestions }) => {
+  const [user] = React.useState(auth.currentUser);
   const sadEffectProps = useSpring({
     transform: score / totalQuestions < 0.5 ? "scale(1.2)" : "scale(1)",
   });
+
+  const getButtonStyle = () => {
+    return user ? "end-page-bttn" : "end-page-bttn-disabled";
+  };
 
   return (
     <div className="end-page-content">
@@ -46,8 +52,8 @@ const QuizEnd = ({ score, totalQuestions }) => {
           </button>
         </Link>
         <Link to="/leaderboard">
-          <button className="end-page-bttn" type="button">
-            View Leader board
+          <button className={getButtonStyle()} type="button" disabled={!user}>
+            View Leaderboard
           </button>
         </Link>
       </div>

@@ -104,6 +104,7 @@ h1 {
 
 .choice-button:hover {
   background-color: white;
+  transform: scale(0.9);
 }
 
 .submit-button {
