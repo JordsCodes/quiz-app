@@ -29,10 +29,12 @@ const NavBar = ({ user, setUser }) => {
           </Link>
         </li>
         <li>
-          <Link className="navbar-links-item" to="/leaderboard">
-            {" "}
-            Leaderboard
-          </Link>
+          {user ? (
+            <Link className="navbar-links-item" to="/leaderboard">
+              {" "}
+              Leaderboard
+            </Link>
+          ) : null}
         </li>
         <li>
           {user ? null : (
