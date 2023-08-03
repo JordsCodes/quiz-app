@@ -53,6 +53,14 @@ const Leaderboard = () => {
               <td className="percentage">{Math.round(user.percentage)}%</td>
             </tr>
           ))}
+          {/* <tr>
+            <div className="leaderboard-header">
+              <td>Rank:</td>
+              <td>User:</td>
+              <td>Total Score:</td>
+              <td>Average Percentage:</td>
+            </div>
+          </tr> */}
         </tbody>
       </table>
     </div>
