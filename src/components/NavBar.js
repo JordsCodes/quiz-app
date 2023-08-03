@@ -17,6 +17,36 @@ const NavBar = ({ user, setUser }) => {
       });
   };
 
+  if (user) {
+    return (
+      <div className="navbar">
+        <ul className="navbar-links">
+          <li>
+            <Link className="navbar-links-item" to="/">
+              {" "}
+              Home{" "}
+            </Link>
+          </li>
+          <li>
+            {user ? (
+              <Link className="navbar-links-item" to="/leaderboard">
+                {" "}
+                Leaderboard
+              </Link>
+            ) : null}
+          </li>
+          <li>
+            {user ? (
+              <Link className="navbar-links-item" to="/" onClick={handleLogOut}>
+                {" "}
+                Log Out
+              </Link>
+            ) : null}
+          </li>
+        </ul>
+      </div>
+    );
+  }
   return (
     <div className="navbar">
       <ul className="navbar-links">
@@ -25,14 +55,6 @@ const NavBar = ({ user, setUser }) => {
             {" "}
             Home{" "}
           </Link>
-        </li>
-        <li>
-          {user ? (
-            <Link className="navbar-links-item" to="/leaderboard">
-              {" "}
-              Leaderboard
-            </Link>
-          ) : null}
         </li>
         <li>
           {user ? null : (
@@ -49,14 +71,6 @@ const NavBar = ({ user, setUser }) => {
               Log In
             </Link>
           )}
-        </li>
-        <li>
-          {user ? (
-            <Link className="navbar-links-item" to="/" onClick={handleLogOut}>
-              {" "}
-              Log Out
-            </Link>
-          ) : null}
         </li>
       </ul>
     </div>
