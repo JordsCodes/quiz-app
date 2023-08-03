@@ -30,40 +30,61 @@ const Leaderboard = () => {
   };
 
   return (
-    <div className="leaderboard">
-      <h1 className="heading">Leaderboard</h1>
-      <table>
-        <thead>
-          <tr>
-            <div className="leaderboard-header">
-              <th>Rank:</th>
-              <th>User:</th>
-              <th>Total Score:</th>
-              <th>Average Percentage:</th>
-            </div>
+    // <div className="leaderboard">
+    //   <h1 className="heading">Leaderboard</h1>
+    //   <table>
+    //     <thead>
+    //       <tr>
+    //         <div className="leaderboard-header">
+    //           <th>Rank:</th>
+    //           <th>User:</th>
+    //           <th>Total Score:</th>
+    //           <th>Average Percentage:</th>
+    //         </div>
+    //       </tr>
+    //     </thead>
+    //     <tbody>
+    //       {leaderboardData.map((user, index) => (
+    //         // eslint-disable-next-line react/no-array-index-key
+    //         <tr key={index} className="score-data">
+    //           <td className="rank">{index + 1}</td>
+    //           <td className="username">{user.username}</td>
+    //           <td className="score">{user.score}</td>
+    //           <td className="percentage">{Math.round(user.percentage)}%</td>
+    //         </tr>
+    //       ))}
+    //       {/* <tr>
+    //         <div className="leaderboard-header">
+    //           <td>Rank:</td>
+    //           <td>User:</td>
+    //           <td>Total Score:</td>
+    //           <td>Average Percentage:</td>
+    //         </div>
+    //       </tr> */}
+    //     </tbody>
+    //   </table>
+    // </div>
+    <table className="leaderboard">
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>User</th>
+          <th>Total Score</th>
+          <th>Average %</th>
+        </tr>
+      </thead>
+      <tbody>
+        {leaderboardData.map((user, index) => (
+          // eslint-disable-next-line react/no-array-index-key
+          <tr key={index} className="score-data">
+            <td className="rank">{index + 1}</td>
+            <td className="username">{user.username}</td>
+            <td className="score">{user.score}</td>
+            <td className="percentage">{Math.round(user.percentage)}%</td>
           </tr>
-        </thead>
-        <tbody>
-          {leaderboardData.map((user, index) => (
-            // eslint-disable-next-line react/no-array-index-key
-            <tr key={index} className="score-data">
-              <td className="rank">{index + 1}</td>
-              <td className="username">{user.username}</td>
-              <td className="score">{user.score}</td>
-              <td className="percentage">{Math.round(user.percentage)}%</td>
-            </tr>
-          ))}
-          {/* <tr>
-            <div className="leaderboard-header">
-              <td>Rank:</td>
-              <td>User:</td>
-              <td>Total Score:</td>
-              <td>Average Percentage:</td>
-            </div>
-          </tr> */}
-        </tbody>
-      </table>
-    </div>
+        ))}
+      </tbody>
+    </table>
   );
 };
 
