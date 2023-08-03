@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { doc, setDoc, getDoc } from "firebase/firestore";
 import MultipleChoice from "./MultipleChoice";
@@ -5,17 +6,14 @@ import QuizEnd from "./QuizEnd";
 import TrueFalse from "./TrueFalse";
 import { db } from "../config/firebase";
 import "../styles/question-drop.css";
-
 const QuestionDrop = ({ questions, user }) => {
   const [questionNumber, setQuestionNumber] = useState(0);
   const [score, setScore] = useState(0);
-
   const sendScoreToDb = async () => {
     const userRef = doc(db, "users", user.uid);
     const docRef = doc(db, "users", user.uid);
     const docSnap = await getDoc(docRef);
     const percentage = (score / questions.length) * 100;
-
     if (docSnap.exists()) {
       const newTotal = score + docSnap.data().total_score;
       const newAverage = (docSnap.data().average_percentage + percentage) / 2;
@@ -33,27 +31,32 @@ const QuestionDrop = ({ questions, user }) => {
       });
     }
   };
-
   if (questionNumber >= questions.length && user) {
     sendScoreToDb();
     return <QuizEnd score={score} totalQuestions={questions.length} />;
   }
-
   if (questionNumber >= questions.length) {
     return <QuizEnd score={score} totalQuestions={questions.length} />;
   }
-
   const handleAnswerSubmit = (userAnswer) => {
     const currentQuestion = questions[questionNumber];
     const formattedUserAnswer =
       typeof userAnswer === "string" ? userAnswer.toLowerCase() : userAnswer;
     const formattedCorrectAnswer = currentQuestion.correct_answer.toLowerCase();
-
     if (formattedUserAnswer === formattedCorrectAnswer) {
       setScore((prevScore) => prevScore + 1);
     }
-
     setQuestionNumber((prevQuestionNumber) => prevQuestionNumber + 1);
+  };
+  const handleAnswerCheck = (userAnswer) => {
+    const currentQuestion = questions[questionNumber];
+    const formattedUserAnswer =
+      typeof userAnswer === "string" ? userAnswer.toLowerCase() : userAnswer;
+    const formattedCorrectAnswer = currentQuestion.correct_answer.toLowerCase();
+    if (formattedUserAnswer === formattedCorrectAnswer) {
+      return true;
+    }
+    return formattedCorrectAnswer;
   };
   // initialise question to be rendered:
   const question = questions[questionNumber];
@@ -84,7 +87,6 @@ const QuestionDrop = ({ questions, user }) => {
       </div>
     );
   }
-
   return (
     <div>
       {questionNumber < questions.length && (
@@ -96,11 +98,11 @@ const QuestionDrop = ({ questions, user }) => {
             questionNumber={questionNumber}
             setQuestionNumber={setQuestionNumber}
             handleAnswerSubmit={handleAnswerSubmit}
+            handleAnswerCheck={handleAnswerCheck}
           />
         </div>
       )}
     </div>
   );
 };
-
 export default QuestionDrop;
