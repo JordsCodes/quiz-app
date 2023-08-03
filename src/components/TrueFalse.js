@@ -26,20 +26,10 @@ const TrueFalse = ({
     if (canClickNext) {
       const formattedUserAnswer = activeAnswer === true ? "true" : "false";
       handleAnswerSubmit(formattedUserAnswer);
-
-      console.log(
-        "user clicked ->",
-        activeAnswer,
-        "correct answer is",
-        question.correct_answer,
-      );
-
       setCanClickNext(false);
       setActiveAnswer("");
-
       const nextQuestion = questionNumber + 1;
       setQuestionNumber(nextQuestion);
-
       navigate("/question-drop", { replace: true });
     }
   };
@@ -78,7 +68,6 @@ const TrueFalse = ({
           onClick={handleNext}
           disabled={activeAnswer === ""}
         >
-          {/* {questionNumber >= question.length ? 'Finish' : 'Next'} */}
           Next
         </button>
       </div>

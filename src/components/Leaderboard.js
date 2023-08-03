@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { getDocs, collection } from "firebase/firestore";
+import { db } from "../config/firebase";
 import "../styles/leaderboard.css";
 
 const Leaderboard = () => {
@@ -10,18 +12,19 @@ const Leaderboard = () => {
     fetchLeaderboardData();
   }, []);
 
-  const fetchLeaderboardData = () => {
-    // Fake data store for leaderboard data (replace this with your backend logic)
-    const fakeLeaderboardData = [
-      { username: "User1", score: 10 },
-      { username: "User2", score: 8 },
-      { username: "User3", score: 12 },
-      { username: "User4", score: 2 },
-    ];
-
-    // Sort leaderboard data by score (descending order)
-    const sortedData = fakeLeaderboardData.sort((a, b) => b.score - a.score);
-
+  const fetchLeaderboardData = async () => {
+    const querySnapshot = await getDocs(collection(db, "users"));
+    const responseData = [];
+    // For each user, push an object to our responseData array
+    querySnapshot.forEach((user) => {
+      responseData.push({
+        username: user.data().username,
+        score: user.data().total_score,
+        percentage: user.data().average_percentage,
+      });
+    });
+    // Sort responseData by percentage (descending order)
+    const sortedData = responseData.sort((a, b) => b.percentage - a.percentage);
     // Update the state with the sorted leaderboard data
     setLeaderboardData(sortedData);
   };
@@ -34,8 +37,9 @@ const Leaderboard = () => {
           <tr>
             <div className="leaderboard-header">
               <th>Rank:</th>
-              <th>Username:</th>
-              <th>Score:</th>
+              <th>User:</th>
+              <th>Total Score:</th>
+              <th>Average Percentage:</th>
             </div>
           </tr>
         </thead>
@@ -43,11 +47,10 @@ const Leaderboard = () => {
           {leaderboardData.map((user, index) => (
             // eslint-disable-next-line react/no-array-index-key
             <tr key={index} className="score-data">
-              <td>{index + 1}</td>
-              <div className="lastusers">
-                <td>{user.username}</td>
-              </div>
-              <td>{user.score}</td>
+              <td className="rank">{index + 1}</td>
+              <td className="username">{user.username}</td>
+              <td className="score">{user.score}</td>
+              <td className="percentage">{Math.round(user.percentage)}%</td>
             </tr>
           ))}
         </tbody>

@@ -26,17 +26,8 @@ const MultipleChoice = ({
   const handleNext = () => {
     if (canClickNext) {
       handleAnswerSubmit(activeAnswer);
-
-      console.log(
-        "user clicked ->",
-        activeAnswer,
-        "correct answer is",
-        question.correct_answer,
-      );
-
       setCanClickNext(false);
       setActiveAnswer("");
-
       const nextQuestion = questionNumber + 1;
       setQuestionNumber(nextQuestion);
       navigate("/question-drop", { replace: true });
