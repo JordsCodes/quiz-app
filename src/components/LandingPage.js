@@ -1,9 +1,11 @@
 import React from "react";
 import "../styles/landing-page.css";
 import { useNavigate } from "react-router-dom";
+import { auth } from "../config/firebase";
 
 const LandingPage = () => {
   const navigate = useNavigate();
+  const user = auth.currentUser;
 
   const handleGenerateQuizClick = () => {
     navigate("/generate-quiz");
@@ -28,6 +30,13 @@ const LandingPage = () => {
           Generate Quiz
         </button>
       </div>
+      {!user && (
+        <div className="view-leaderboard">
+          <p className="view-leaderboard-text">
+            Please create an account, or log-in to view the leaderboard!
+          </p>
+        </div>
+      )}
     </div>
   );
 };

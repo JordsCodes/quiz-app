@@ -45,3 +45,12 @@
 .generate-quiz-button:hover {
   background-color: white;
 }
+
+.view-leaderboard-text {
+  font-size: 30px;
+  color: rgb(250, 231, 231);
+  opacity: 0.4;
+  margin-top: 100px;
+  border-style: groove;
+  padding: 10px
+}
