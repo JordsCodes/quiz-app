@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../styles/sign-in.css";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import { auth } from "../config/firebase";
 
 const SignUp = ({ setUser }) => {
@@ -25,7 +25,6 @@ const SignUp = ({ setUser }) => {
         navigate("/");
       })
       .catch((error) => {
-        console.log(error.message);
         toast.error(error.message);
       });
   };
@@ -76,7 +75,6 @@ const SignUp = ({ setUser }) => {
       <button className="button" type="submit">
         Sign Up
       </button>
-     
     </form>
   );
 };

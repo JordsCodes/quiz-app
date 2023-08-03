@@ -33,8 +33,12 @@ const QuestionDrop = ({ questions, user }) => {
     }
   };
 
-  if (questionNumber >= questions.length) {
+  if (questionNumber >= questions.length && user) {
     sendScoreToDb();
+    return <QuizEnd score={score} totalQuestions={questions.length} />;
+  }
+
+  if (questionNumber >= questions.length) {
     return <QuizEnd score={score} totalQuestions={questions.length} />;
   }
 
