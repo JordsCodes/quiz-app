@@ -17,9 +17,42 @@ const NavBar = ({ user, setUser, username }) => {
       });
   };
 
+
   updateProfile(auth.currentUser, {
     displayName: username,
   });
+
+
+  if (user) {
+    return (
+      <div className="navbar">
+        <ul className="navbar-links">
+          <li>
+            <Link className="navbar-links-item" to="/">
+              {" "}
+              Home{" "}
+            </Link>
+          </li>
+          <li>
+            {user ? (
+              <Link className="navbar-links-item" to="/leaderboard">
+                {" "}
+                Leaderboard
+              </Link>
+            ) : null}
+          </li>
+          <li>
+            {user ? (
+              <Link className="navbar-links-item" to="/" onClick={handleLogOut}>
+                {" "}
+                Log Out
+              </Link>
+            ) : null}
+          </li>
+        </ul>
+      </div>
+    );
+  }
 
   return (
     <div className="navbar">
@@ -29,14 +62,6 @@ const NavBar = ({ user, setUser, username }) => {
             {" "}
             Home{" "}
           </Link>
-        </li>
-        <li>
-          {user ? (
-            <Link className="navbar-links-item" to="/leaderboard">
-              {" "}
-              Leaderboard
-            </Link>
-          ) : null}
         </li>
         <li>
           {user ? null : (
@@ -54,6 +79,7 @@ const NavBar = ({ user, setUser, username }) => {
             </Link>
           )}
         </li>
+
         <li>
           {user ? (
             <Link className="navbar-links-item" to="/" onClick={handleLogOut}>
