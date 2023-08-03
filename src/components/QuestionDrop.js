@@ -4,6 +4,7 @@ import MultipleChoice from "./MultipleChoice";
 import QuizEnd from "./QuizEnd";
 import TrueFalse from "./TrueFalse";
 import { db } from "../config/firebase";
+import "../styles/question-drop.css";
 
 const QuestionDrop = ({ questions, user }) => {
   const [questionNumber, setQuestionNumber] = useState(0);
@@ -71,7 +72,7 @@ const QuestionDrop = ({ questions, user }) => {
       <div>
         {questionNumber < questions.length && (
           <div>
-            <h2>Question {questionNumber + 1}</h2>
+            <h2 className="question-number">Question {questionNumber + 1}</h2>
             <TrueFalse
               question={question}
               questionNumber={questionNumber}
@@ -88,7 +89,7 @@ const QuestionDrop = ({ questions, user }) => {
     <div>
       {questionNumber < questions.length && (
         <div>
-          <h2>Question {questionNumber + 1} </h2>
+          <h2 className="question-number">Question {questionNumber + 1} </h2>
           <MultipleChoice
             question={question}
             answers={answers}
