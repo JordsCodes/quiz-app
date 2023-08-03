@@ -1,3 +1,11 @@
 h1 {
   color: #CAC0B3;
 }
+
+.logged-in-message {
+  position: fixed;
+  top: 75px;
+  left: 300px;
+  color: #fffffe;
+  font-size: 20px;
+}
