@@ -1,11 +1,11 @@
 import React from "react";
 import "../styles/navbar.css";
 import { Link } from "react-router-dom";
-import { signOut } from "firebase/auth";
+import { signOut, updateProfile } from "firebase/auth";
 import toast from "react-hot-toast";
 import { auth } from "../config/firebase";
 
-const NavBar = ({ user, setUser }) => {
+const NavBar = ({ user, setUser, username }) => {
   const handleLogOut = () => {
     signOut(auth)
       .then(() => {
@@ -16,6 +16,12 @@ const NavBar = ({ user, setUser }) => {
         toast.error(error.message);
       });
   };
+
+
+  updateProfile(auth.currentUser, {
+    displayName: username,
+  });
+
 
   if (user) {
     return (
@@ -47,6 +53,7 @@ const NavBar = ({ user, setUser }) => {
       </div>
     );
   }
+
   return (
     <div className="navbar">
       <ul className="navbar-links">
@@ -71,6 +78,19 @@ const NavBar = ({ user, setUser }) => {
               Log In
             </Link>
           )}
+        </li>
+
+        <li>
+          {user ? (
+            <Link className="navbar-links-item" to="/" onClick={handleLogOut}>
+              {" "}
+              Log Out
+            </Link>
+          ) : null}
+        </li>
+        <li>
+        {user ? (
+            <h2 className="displayname">Logged in as {user.displayName}</h2>) : null}
         </li>
       </ul>
     </div>
