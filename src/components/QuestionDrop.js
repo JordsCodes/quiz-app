@@ -17,6 +17,7 @@ const QuestionDrop = ({ questions, user }) => {
     const percentage = (score / questions.length) * 100;
 
     if (docSnap.exists()) {
+
       const newTotal = score + docSnap.data().total_score;
       const newAverage = (docSnap.data().average_percentage + percentage) / 2;
       await setDoc(userRef, {
@@ -24,6 +25,7 @@ const QuestionDrop = ({ questions, user }) => {
         total_score: newTotal,
         average_percentage: newAverage,
       });
+
     } else {
       // docSnap.data() will be undefined in this case
       await setDoc(userRef, {
@@ -34,12 +36,15 @@ const QuestionDrop = ({ questions, user }) => {
     }
   };
 
-  if (questionNumber >= questions.length && user) {
+  if (!questions) {
+    return <p>No questions available</p>;
+  };
+
+  if (questions && questionNumber >= questions.length && user) {
     sendScoreToDb();
     return <QuizEnd score={score} totalQuestions={questions.length} />;
   }
-
-  if (questionNumber >= questions.length) {
+  if (questions && questionNumber >= questions.length) {
     return <QuizEnd score={score} totalQuestions={questions.length} />;
   }
 
@@ -48,13 +53,12 @@ const QuestionDrop = ({ questions, user }) => {
     const formattedUserAnswer =
       typeof userAnswer === "string" ? userAnswer.toLowerCase() : userAnswer;
     const formattedCorrectAnswer = currentQuestion.correct_answer.toLowerCase();
-
     if (formattedUserAnswer === formattedCorrectAnswer) {
       setScore((prevScore) => prevScore + 1);
     }
-
     setQuestionNumber((prevQuestionNumber) => prevQuestionNumber + 1);
   };
+
   // initialise question to be rendered:
   const question = questions[questionNumber];
   // initialise answers array:
@@ -63,14 +67,16 @@ const QuestionDrop = ({ questions, user }) => {
     question.correct_answer,
   );
   // randomise the order of the answers:
-  for (let i = 0; i < answers.length; i += 1) {
-    answers.splice(Math.round(Math.random() * i), 0, answers.pop());
-  }
+  if (answers) {
+    for (let i = 0; i < answers.length; i += 1) {
+      answers.splice(Math.round(Math.random() * i), 0, answers.pop());
+    }
+  };
   // return either a MultipleChoice or TrueFalse component:
   if (question.type === "boolean") {
     return (
       <div>
-        {questionNumber < questions.length && (
+        {questions && questionNumber < questions.length && (
           <div>
             <h2 className="question-number">Question {questionNumber + 1}</h2>
             <TrueFalse
@@ -84,10 +90,9 @@ const QuestionDrop = ({ questions, user }) => {
       </div>
     );
   }
-
   return (
     <div>
-      {questionNumber < questions.length && (
+      {questions && questionNumber < questions.length && (
         <div>
           <h2 className="question-number">Question {questionNumber + 1} </h2>
           <MultipleChoice
@@ -102,5 +107,4 @@ const QuestionDrop = ({ questions, user }) => {
     </div>
   );
 };
-
 export default QuestionDrop;

@@ -13,7 +13,7 @@ const TrueFalse = ({
   setQuestionNumber,
   handleAnswerSubmit,
 }) => {
-  const [activeAnswer, setActiveAnswer] = useState("");
+  const [activeAnswer, setActiveAnswer] = useState(null);
   const [canClickNext, setCanClickNext] = useState(false);
   const navigate = useNavigate();
 
@@ -27,11 +27,19 @@ const TrueFalse = ({
       const formattedUserAnswer = activeAnswer === true ? "true" : "false";
       handleAnswerSubmit(formattedUserAnswer);
       setCanClickNext(false);
-      setActiveAnswer("");
+      setActiveAnswer(null);
       const nextQuestion = questionNumber + 1;
       setQuestionNumber(nextQuestion);
       navigate("/question-drop", { replace: true });
     }
+  };
+
+  const isAnswerCorrect = (answer) => {
+    if (!canClickNext) return "";
+
+    const formattedUserAnswer = answer === true ? "true" : "false";
+    const formattedCorrectAnswer = question.correct_answer.toLowerCase();
+    return formattedUserAnswer === formattedCorrectAnswer ? "correct" : "incorrect";
   };
 
   return (
@@ -39,22 +47,16 @@ const TrueFalse = ({
       <h1 className="true-false-heading-text">{decode(question.question)}</h1>
       <div className="button-container">
         <button
-          className={
-            activeAnswer === true
-              ? "true-false-questions-button-active"
-              : "true-false-questions-button"
-          }
+          className={`true-false-questions-button ${activeAnswer === true ? "true-false-questions-button-active" : ""
+            } ${isAnswerCorrect(true)}`}
           type="submit"
           onClick={() => handleAnswerClick(true)}
         >
           True
         </button>
         <button
-          className={
-            activeAnswer === false
-              ? "true-false-questions-button-active"
-              : "true-false-questions-button"
-          }
+          className={`true-false-questions-button ${activeAnswer === false ? "true-false-questions-button-active" : ""
+            } ${isAnswerCorrect(false)}`}
           type="submit"
           onClick={() => handleAnswerClick(false)}
         >
@@ -66,7 +68,7 @@ const TrueFalse = ({
           className="next-button"
           type="button"
           onClick={handleNext}
-          disabled={activeAnswer === ""}
+          disabled={activeAnswer === null}
         >
           Next
         </button>
