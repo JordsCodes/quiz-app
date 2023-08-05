@@ -32,9 +32,6 @@ const App = () => {
 
   return (
     <div className="app">
-      {user ? (
-        <p className="logged-in-message">{`You are logged in as ~ ${user.displayName}`}</p>
-      ) : null}
       <Toaster
         toastOptions={{
           success: {
