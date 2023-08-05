@@ -1,6 +1,6 @@
-import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/multiple-choice.css";
+import React, { useState } from "react";
 
 const decode = (str) => {
   const txt = new DOMParser().parseFromString(str, "text/html");
@@ -12,30 +12,20 @@ const MultipleChoice = ({
   questionNumber,
   setQuestionNumber,
   handleAnswerSubmit,
-  handleAnswerCheck,
 }) => {
   const [activeAnswer, setActiveAnswer] = useState("");
   const [canClickNext, setCanClickNext] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
   const navigate = useNavigate();
-  const [checkAnswer, setCheckAnswer] = useState(false);
-  const [correctAnswerClass, setCorrectAnswerClass] = useState(
-    "multiple-choice-questions-button-active",
-  );
+
   const handleAnswerClick = (answer) => {
     setActiveAnswer(answer);
+    setSubmitted(true);
     setCanClickNext(true);
   };
   const handleNext = () => {
-    if (canClickNext && !checkAnswer) {
-      setCheckAnswer(true);
-      console.log("answer checked");
-      const response = handleAnswerCheck(activeAnswer);
-      console.log(response);
-      if (response === true) {
-        setCorrectAnswerClass("multiple-choice-questions-button-active correct")
-      }
-    }
-    if (canClickNext && checkAnswer) {
+    if (canClickNext) {
+      setSubmitted(false);
       handleAnswerSubmit(activeAnswer);
       setCanClickNext(false);
       setActiveAnswer("");
@@ -44,16 +34,11 @@ const MultipleChoice = ({
       navigate("/question-drop", { replace: true });
     }
   };
-  const getClasses = index => {
-    if (answer === answers[index]) {
-      if (answer === activeAnswer) {
-        return "multiple-choice-questions-button-active correct";
-      }
-      return "multiple-choice-questions-button-active";
-    }
-    return "multiple-choice-questions-button";
-
-  }
+  const determineClassName = (answerNumber) => {
+    return question.correct_answer === answers[answerNumber]
+      ? "correct"
+      : "incorrect";
+  };
   return (
     <div className="multiple-choice">
       <div className="multiple-choice-heading">
@@ -63,28 +48,32 @@ const MultipleChoice = ({
       </div>
       <div className="multiple-choice-questions">
         <button
-          className={getClasses(0)}
+          className={`multiple-choice-questions-button ${submitted && determineClassName(0)
+            }`}
           type="submit"
           onClick={() => handleAnswerClick(answers[0])}
         >
           {decode(answers[0])}
         </button>
         <button
-          className={getClasses(1)}
+          className={`multiple-choice-questions-button ${submitted && determineClassName(1)
+            }`}
           type="submit"
           onClick={() => handleAnswerClick(answers[1])}
         >
           {decode(answers[1])}
         </button>
         <button
-          className={getClasses(2)}
+          className={`multiple-choice-questions-button ${submitted && determineClassName(2)
+            }`}
           type="submit"
           onClick={() => handleAnswerClick(answers[2])}
         >
           {decode(answers[2])}
         </button>
         <button
-          className={getClasses(3)}
+          className={`multiple-choice-questions-button ${submitted && determineClassName(3)
+            }`}
           type="submit"
           onClick={() => handleAnswerClick(answers[3])}
         >
@@ -101,7 +90,7 @@ const MultipleChoice = ({
           Next
         </button>
       </div>
-    </div >
+    </div>
   );
 };
 export default MultipleChoice;

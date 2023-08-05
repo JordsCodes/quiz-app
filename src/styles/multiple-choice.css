@@ -31,28 +31,19 @@
 }
 
 .correct {
-  border: 5px solid green;
+  background-color: green;
 }
 
 .incorrect {
-  border: 5px solid red;
+  background-color: red;
 }
 
 .multiple-choice-questions-button:hover {
-  background-color: white;
   transform: scale(0.9);
 }
 
-.multiple-choice-questions-button-active {
-  border: dashed;
-  border-radius: 5px;
-  background-color: #F9BC60;
-  color: #001E1D;
-  ;
-  width: 300px;
-  height: 150px;
-  font-size: 24px;
-  cursor: pointer;
+.multiple-choice-questions-button:focus {
+  border: solid 4px black;
 }
 
 .nav-button {
