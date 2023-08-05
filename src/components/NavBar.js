@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../styles/navbar.css";
 import { Link } from "react-router-dom";
 import { signOut, updateProfile } from "firebase/auth";
@@ -6,6 +6,20 @@ import toast from "react-hot-toast";
 import { auth } from "../config/firebase";
 
 const NavBar = ({ user, setUser, username }) => {
+  useEffect(() => {
+    if (user && username) {
+      updateProfile(user, {
+        displayName: username,
+      })
+        .then(() => {
+          toast.success("Display name updated successfully");
+        })
+        .catch((error) => {
+          toast.error(error.message);
+        });
+    }
+  }, [user, username]);
+
   const handleLogOut = () => {
     signOut(auth)
       .then(() => {
@@ -16,12 +30,6 @@ const NavBar = ({ user, setUser, username }) => {
         toast.error(error.message);
       });
   };
-
-
-  updateProfile(auth.currentUser, {
-    displayName: username,
-  });
-
 
   if (user) {
     return (
@@ -34,22 +42,19 @@ const NavBar = ({ user, setUser, username }) => {
             </Link>
           </li>
           <li>
-            {user ? (
-              <Link className="navbar-links-item" to="/leaderboard">
-                {" "}
-                Leaderboard
-              </Link>
-            ) : null}
+            <Link className="navbar-links-item" to="/leaderboard">
+              {" "}
+              Leaderboard
+            </Link>
           </li>
           <li>
-            {user ? (
-              <Link className="navbar-links-item" to="/" onClick={handleLogOut}>
-                {" "}
-                Log Out
-              </Link>
-            ) : null}
+            <Link className="navbar-links-item" to="/" onClick={handleLogOut}>
+              {" "}
+              Log Out
+            </Link>
           </li>
         </ul>
+        <h2 className="displayname">You are logged in as {user.displayName}</h2>
       </div>
     );
   }
@@ -64,33 +69,16 @@ const NavBar = ({ user, setUser, username }) => {
           </Link>
         </li>
         <li>
-          {user ? null : (
-            <Link className="navbar-links-item" to="sign-up">
-              {" "}
-              Sign Up{" "}
-            </Link>
-          )}
+          <Link className="navbar-links-item" to="sign-up">
+            {" "}
+            Sign Up{" "}
+          </Link>
         </li>
         <li>
-          {user ? null : (
-            <Link className="navbar-links-item" to="log-in">
-              {" "}
-              Log In
-            </Link>
-          )}
-        </li>
-
-        <li>
-          {user ? (
-            <Link className="navbar-links-item" to="/" onClick={handleLogOut}>
-              {" "}
-              Log Out
-            </Link>
-          ) : null}
-        </li>
-        <li>
-        {user ? (
-            <h2 className="displayname">Logged in as {user.displayName}</h2>) : null}
+          <Link className="navbar-links-item" to="log-in">
+            {" "}
+            Log In
+          </Link>
         </li>
       </ul>
     </div>
