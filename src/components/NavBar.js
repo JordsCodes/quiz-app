@@ -17,12 +17,6 @@ const NavBar = ({ user, setUser, username }) => {
       });
   };
 
-
-  updateProfile(auth.currentUser, {
-    displayName: username,
-  });
-
-
   if (user) {
     return (
       <div className="navbar">
