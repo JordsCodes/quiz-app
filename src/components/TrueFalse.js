@@ -13,33 +13,32 @@ const TrueFalse = ({
   setQuestionNumber,
   handleAnswerSubmit,
 }) => {
-  const [activeAnswer, setActiveAnswer] = useState(null);
+  const [activeAnswer, setActiveAnswer] = useState("");
   const [canClickNext, setCanClickNext] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
   const navigate = useNavigate();
 
   const handleAnswerClick = (answer) => {
     setActiveAnswer(answer);
+    setSubmitted(true);
     setCanClickNext(true);
   };
 
   const handleNext = () => {
     if (canClickNext) {
+      setSubmitted(false);
       const formattedUserAnswer = activeAnswer === true ? "true" : "false";
       handleAnswerSubmit(formattedUserAnswer);
       setCanClickNext(false);
-      setActiveAnswer(null);
+      setActiveAnswer("");
       const nextQuestion = questionNumber + 1;
       setQuestionNumber(nextQuestion);
       navigate("/question-drop", { replace: true });
     }
   };
 
-  const isAnswerCorrect = (answer) => {
-    if (!canClickNext) return "";
-
-    const formattedUserAnswer = answer === true ? "true" : "false";
-    const formattedCorrectAnswer = question.correct_answer.toLowerCase();
-    return formattedUserAnswer === formattedCorrectAnswer ? "correct" : "incorrect";
+  const determineClassName = (answer) => {
+    return question.correct_answer === answer ? "correct" : "incorrect";
   };
 
   return (
@@ -47,16 +46,15 @@ const TrueFalse = ({
       <h1 className="true-false-heading-text">{decode(question.question)}</h1>
       <div className="button-container">
         <button
-          className={`true-false-questions-button ${activeAnswer === true ? "true-false-questions-button-active" : ""
-            } ${isAnswerCorrect(true)}`}
+          className={`true-false-questions-button ${submitted && determineClassName("True")}`}
           type="submit"
           onClick={() => handleAnswerClick(true)}
         >
           True
         </button>
         <button
-          className={`true-false-questions-button ${activeAnswer === false ? "true-false-questions-button-active" : ""
-            } ${isAnswerCorrect(false)}`}
+          className={`true-false-questions-button ${submitted && determineClassName("False")
+            }`}
           type="submit"
           onClick={() => handleAnswerClick(false)}
         >
@@ -68,7 +66,7 @@ const TrueFalse = ({
           className="next-button"
           type="button"
           onClick={handleNext}
-          disabled={activeAnswer === null}
+          disabled={!canClickNext}
         >
           Next
         </button>
