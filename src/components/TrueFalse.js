@@ -46,16 +46,21 @@ const TrueFalse = ({
       <h1 className="true-false-heading-text">{decode(question.question)}</h1>
       <div className="button-container">
         <button
+          className={`true-false-questions-button ${
+            submitted && determineClassName("True")
+          }`}
           className={`true-false-questions-button ${submitted && determineClassName("True")
             }`}
+
           type="submit"
           onClick={() => handleAnswerClick(true)}
         >
           True
         </button>
         <button
-          className={`true-false-questions-button ${submitted && determineClassName("False")
-            }`}
+          className={`true-false-questions-button ${
+            submitted && determineClassName("False")
+          }`}
           type="submit"
           onClick={() => handleAnswerClick(false)}
         >

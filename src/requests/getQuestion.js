@@ -9,7 +9,6 @@ const getQuestion = (choices) => {
         return questionsData;
       });
   } catch (error) {
-    console.error("Error fetching questions:", error);
     return [];
   }
 };
