@@ -1,25 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "../styles/navbar.css";
 import { Link } from "react-router-dom";
-import { signOut, updateProfile } from "firebase/auth";
+import { signOut } from "firebase/auth";
 import toast from "react-hot-toast";
 import { auth } from "../config/firebase";
 
-const NavBar = ({ user, setUser, username }) => {
-  /* useEffect(() => {
-    if (user && username) {
-      updateProfile(user, {
-        displayName: username,
-      })
-        .then(() => {
-          toast.success("Display name updated successfully");
-        })
-        .catch((error) => {
-          toast.error(error.message);
-        });
-    }
-  }, [user, username]); */
-
+const NavBar = ({ user, setUser }) => {
   const handleLogOut = () => {
     signOut(auth)
       .then(() => {
