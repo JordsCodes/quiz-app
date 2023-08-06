@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 import { auth } from "../config/firebase";
 
 const NavBar = ({ user, setUser }) => {
+const NavBar = ({ user, setUser, loginMessage }) => {
   const handleLogOut = () => {
     signOut(auth)
       .then(() => {
@@ -40,7 +41,7 @@ const NavBar = ({ user, setUser }) => {
             </Link>
           </li>
         </ul>
-        <h2 className="displayname">You are logged in as {user.displayName}</h2>
+        <h2 className="displayname">{loginMessage}</h2>
       </div>
     );
   }

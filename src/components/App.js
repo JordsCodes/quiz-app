@@ -51,7 +51,7 @@ const App = () => {
           },
         }}
       />
-      <NavBar setUser={setUser} user={user} />
+      <NavBar setUser={setUser} user={user} loginMessage={loginMessage} />
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="log-in" element={<LogIn setUser={setUser} />} />
@@ -63,6 +63,7 @@ const App = () => {
               user={user}
               username={username}
               setUsername={setUsername}
+              loginMessage={loginMessage}
               setLoginMessage={setLoginMessage}
             />
           }
