@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 import { auth } from "../config/firebase";
 
 const NavBar = ({ user, setUser, username }) => {
-  useEffect(() => {
+  /* useEffect(() => {
     if (user && username) {
       updateProfile(user, {
         displayName: username,
@@ -18,7 +18,7 @@ const NavBar = ({ user, setUser, username }) => {
           toast.error(error.message);
         });
     }
-  }, [user, username]);
+  }, [user, username]); */
 
   const handleLogOut = () => {
     signOut(auth)
