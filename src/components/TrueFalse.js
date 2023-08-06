@@ -46,9 +46,6 @@ const TrueFalse = ({
       <h1 className="true-false-heading-text">{decode(question.question)}</h1>
       <div className="button-container">
         <button
-          // className={`true-false-questions-button ${
-          //   submitted && determineClassName("True")
-          // }`}
           className={`true-false-questions-button ${
             submitted && determineClassName("True")
           }`}
