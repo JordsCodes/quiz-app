@@ -4,7 +4,6 @@ import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { auth } from "../config/firebase";
-import LandingPage from "./LandingPage";
 
 const SignUp = ({ setUser, setLoginMessage }) => {
   const [email, setEmail] = useState();
@@ -21,6 +20,7 @@ const SignUp = ({ setUser, setLoginMessage }) => {
         setUser(user);
         updateProfile(auth.currentUser, {
           displayName: username,
+        });
         });  
         setLoginMessage(`You are logged in as ${username}`);
         navigate("/");

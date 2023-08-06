@@ -19,7 +19,7 @@ const App = () => {
   const [questions, setQuestions, score] = useState([]);
   const [username, setUsername] = useState();
   const [user, setUser] = useState(null);
-  const [loginMessage, setLoginMessage] = useState();
+  const [setLoginMessage] = useState();
 
   useEffect(() => {
     onAuthStateChanged(auth, (firebaseUser) => {
