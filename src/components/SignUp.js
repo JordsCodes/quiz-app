@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 import { auth } from "../config/firebase";
 import LandingPage from "./LandingPage";
 
-const SignUp = ({ setUser }) => {
+const SignUp = ({ setUser, setLoginMessage }) => {
   const [email, setEmail] = useState();
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
@@ -21,11 +21,10 @@ const SignUp = ({ setUser }) => {
         setUser(user);
         updateProfile(auth.currentUser, {
           displayName: username,
-        });
-        
+        });  
+        setLoginMessage(`You are logged in as ${username}`)
         navigate("/");
         toast.success("Welcome to QuizBiz!"); 
-        navigate(0);
         
       })
       .catch((error) => {
