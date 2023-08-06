@@ -17,7 +17,6 @@ const QuestionDrop = ({ questions, user }) => {
     const percentage = (score / questions.length) * 100;
 
     if (docSnap.exists()) {
-
       const newTotal = score + docSnap.data().total_score;
       const newAverage = (docSnap.data().average_percentage + percentage) / 2;
       await setDoc(userRef, {
@@ -25,9 +24,7 @@ const QuestionDrop = ({ questions, user }) => {
         total_score: newTotal,
         average_percentage: newAverage,
       });
-
     } else {
-      // docSnap.data() will be undefined in this case
       await setDoc(userRef, {
         username: user.displayName,
         total_score: score,
@@ -38,7 +35,7 @@ const QuestionDrop = ({ questions, user }) => {
 
   if (!questions) {
     return <p>No questions available</p>;
-  };
+  }
 
   if (questions && questionNumber >= questions.length && user) {
     sendScoreToDb();
@@ -59,20 +56,17 @@ const QuestionDrop = ({ questions, user }) => {
     setQuestionNumber((prevQuestionNumber) => prevQuestionNumber + 1);
   };
 
-  // initialise question to be rendered:
   const question = questions[questionNumber];
-  // initialise answers array:
   const answers = [].concat(
     question.incorrect_answers,
     question.correct_answer,
   );
-  // randomise the order of the answers:
   if (answers) {
     for (let i = 0; i < answers.length; i += 1) {
       answers.splice(Math.round(Math.random() * i), 0, answers.pop());
     }
-  };
-  // return either a MultipleChoice or TrueFalse component:
+  }
+
   if (question.type === "boolean") {
     return (
       <div>
