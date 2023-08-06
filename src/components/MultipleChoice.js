@@ -48,32 +48,36 @@ const MultipleChoice = ({
       </div>
       <div className="multiple-choice-questions">
         <button
-          className={`multiple-choice-questions-button ${submitted && determineClassName(0)
-            }`}
+          className={`multiple-choice-questions-button ${
+            submitted && determineClassName(0)
+          }`}
           type="submit"
           onClick={() => handleAnswerClick(answers[0])}
         >
           {decode(answers[0])}
         </button>
         <button
-          className={`multiple-choice-questions-button ${submitted && determineClassName(1)
-            }`}
+          className={`multiple-choice-questions-button ${
+            submitted && determineClassName(1)
+          }`}
           type="submit"
           onClick={() => handleAnswerClick(answers[1])}
         >
           {decode(answers[1])}
         </button>
         <button
-          className={`multiple-choice-questions-button ${submitted && determineClassName(2)
-            }`}
+          className={`multiple-choice-questions-button ${
+            submitted && determineClassName(2)
+          }`}
           type="submit"
           onClick={() => handleAnswerClick(answers[2])}
         >
           {decode(answers[2])}
         </button>
         <button
-          className={`multiple-choice-questions-button ${submitted && determineClassName(3)
-            }`}
+          className={`multiple-choice-questions-button ${
+            submitted && determineClassName(3)
+          }`}
           type="submit"
           onClick={() => handleAnswerClick(answers[3])}
         >
