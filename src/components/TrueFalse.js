@@ -49,6 +49,9 @@ const TrueFalse = ({
           className={`true-false-questions-button ${
             submitted && determineClassName("True")
           }`}
+          className={`true-false-questions-button ${submitted && determineClassName("True")
+            }`}
+
           type="submit"
           onClick={() => handleAnswerClick(true)}
         >

@@ -5,6 +5,7 @@ import { signOut } from "firebase/auth";
 import toast from "react-hot-toast";
 import { auth } from "../config/firebase";
 
+const NavBar = ({ user, setUser }) => {
 const NavBar = ({ user, setUser, loginMessage }) => {
   const handleLogOut = () => {
     signOut(auth)
