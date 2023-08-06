@@ -4,6 +4,7 @@ import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { auth } from "../config/firebase";
+import LandingPage from "./LandingPage";
 
 const SignUp = ({ setUser }) => {
   const [email, setEmail] = useState();
@@ -21,8 +22,11 @@ const SignUp = ({ setUser }) => {
         updateProfile(auth.currentUser, {
           displayName: username,
         });
-        toast.success("Welcome to QuizBiz!");
+        
         navigate("/");
+        toast.success("Welcome to QuizBiz!"); 
+        navigate(0);
+        
       })
       .catch((error) => {
         toast.error(error.message);

@@ -6,7 +6,7 @@ import { auth } from "../config/firebase";
 const LandingPage = () => {
   const navigate = useNavigate();
   const user = auth.currentUser;
-
+  
   const handleGenerateQuizClick = () => {
     navigate("/generate-quiz");
   };
