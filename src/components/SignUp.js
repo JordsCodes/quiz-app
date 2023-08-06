@@ -21,10 +21,9 @@ const SignUp = ({ setUser, setLoginMessage }) => {
         updateProfile(auth.currentUser, {
           displayName: username,
         });
-        });  
+        toast.success("Welcome back!");
         setLoginMessage(`You are logged in as ${username}`);
         navigate("/");
-        toast.success("Welcome to QuizBiz!");
       })
       .catch((error) => {
         toast.error(error.message);
