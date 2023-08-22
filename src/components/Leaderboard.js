@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { getDocs, collection } from "firebase/firestore";
 import { db } from "../config/firebase";
 import "../styles/leaderboard.css";
@@ -6,22 +6,26 @@ import "../styles/leaderboard.css";
 const Leaderboard = () => {
   const [leaderboardData, setLeaderboardData] = useState([]);
 
-  const fetchLeaderboardData = async () => {
-    const querySnapshot = await getDocs(collection(db, "users"));
-    const responseData = [];
-    querySnapshot.forEach((user) => {
-      responseData.push({
-        username: user.data().username,
-        score: user.data().total_score,
-        percentage: user.data().average_percentage,
+  useEffect(() => {
+    const fetchLeaderboardData = async () => {
+      const querySnapshot = await getDocs(collection(db, "users"));
+      const responseData = [];
+      querySnapshot.forEach((user) => {
+        responseData.push({
+          username: user.data().username,
+          score: user.data().total_score,
+          percentage: user.data().average_percentage,
+        });
       });
-    });
 
-    const sortedData = responseData.sort((a, b) => b.percentage - a.percentage);
-    setLeaderboardData(sortedData);
-  };
+      const sortedData = responseData.sort(
+        (a, b) => b.percentage - a.percentage,
+      );
+      setLeaderboardData(sortedData);
+    };
 
-  fetchLeaderboardData();
+    fetchLeaderboardData();
+  });
 
   return (
     <table className="leaderboard">
